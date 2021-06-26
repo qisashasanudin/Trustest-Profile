@@ -11,13 +11,9 @@ const RoboboatVideo = () => {
 
   return (
     <div className="roboboat-video">
-      <h1>AMV UI for Roboboat 2021</h1>
+      <h1>TRUSTest Mockup Development</h1>
       <Line />
-      <p>
-        RoboBoat is an international student competition. Teams from around the
-        world design autonomous, robotic boats to navigate through a challenge
-        course.
-      </p>
+      
       <div className="roboboat-video__youtube">
         <YouTube videoId="jsRMPio2Jv0" opts={opts} />
       </div>

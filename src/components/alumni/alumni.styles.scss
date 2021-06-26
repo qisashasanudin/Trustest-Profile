@@ -1,10 +1,9 @@
-@import '../../sass/main.scss';
+@import "../../sass/main.scss";
 
 .alumni {
   display: flex;
   flex-direction: column;
   align-items: center;
-
   width: 100%;
 
   &__list {
@@ -23,7 +22,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: $color-secondary;
+    color: $color-accent;
     font-family: $font-display;
     font-size: 4rem;
     line-height: 1;
@@ -71,20 +70,8 @@
 .alumni-card {
   width: 80rem;
   margin-bottom: 3rem;
-  display: grid;
-  grid-template-columns: 20rem 1fr;
-
-  @include respond(tab-port) {
-    width: 100%;
-    grid-template-columns: 20rem 1fr;
-  }
-
-  @include respond(phone) {
-    width: 100%;
-    margin-bottom: 5rem;
-
-    grid-template-columns: 10rem 1fr;
-  }
+  display: flex;
+  justify-content: center;
 
   &__content {
     position: relative;
@@ -121,7 +108,9 @@
   }
 
   &__photo {
-    margin-right: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     @include respond(tab-port) {
       margin-right: 1rem;
     }
@@ -130,6 +119,7 @@
       width: 15rem;
       height: 15rem;
       border-radius: 50%;
+      object-fit: cover;
 
       @include respond(phone) {
         width: 8rem;
@@ -140,7 +130,7 @@
     & > h2 {
       margin-top: 1rem;
       font-size: 2.1rem;
-      color: $color-secondary;
+      color: $color-accent;
       line-height: 1;
 
       @include respond(phone) {
@@ -152,6 +142,13 @@
       color: $color-primary;
       @include respond(phone) {
         font-size: 1.2rem;
+      }
+    }
+    & > p {
+      font-size: 1.5rem;
+      color: $color-tertiary;
+      @include respond(phone) {
+        font-size: 1.3rem;
       }
     }
   }

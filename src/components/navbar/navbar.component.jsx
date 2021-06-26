@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './navbar.styles.scss';
-import { ReactComponent as Logo } from '../../assets/amv-logo.svg';
 import { withRouter } from 'react-router-dom';
+import { logoTrustest } from '../../assets';
 
 class Navbar extends Component {
   constructor(props) {
@@ -36,12 +36,10 @@ class Navbar extends Component {
     return (
       <div className={`navbar ${this.state.navbar ? 'active' : ''} `}>
         <div className="navbar__logo" onClick={() => this.handleChange('/')}>
-          <Logo />
+          <img src={logoTrustest} alt="logo" />
         </div>
-        <p onClick={() => this.handleChange('/members')}>Member</p>
-        <p onClick={() => this.handleChange('/products')}>Robots</p>
-        <p onClick={() => this.handleChange('/achievements')}>Achievements</p>
-        <p onClick={() => this.handleChange('/contact')}>Contact</p>
+        {/* <p className = {`${this.state.navbar ? 'active' : ''}`} onClick={() => this.handleChange('/members')}>Member</p>
+        <p className = {`${this.state.navbar ? 'active' : ''}`} onClick={() => this.handleChange('/aboutus')}>About Us</p> */}
       </div>
     );
   }

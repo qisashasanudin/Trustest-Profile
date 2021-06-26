@@ -1,4 +1,4 @@
-@import '../../sass/main.scss';
+@import "../../sass/main.scss";
 
 .member-select {
   padding-top: 2rem;
@@ -27,7 +27,7 @@
     cursor: pointer;
     width: 13rem;
     height: 13rem;
-    background-color: $color-white;
+    background-color: $color-secondary;
     border-radius: 20px;
     box-shadow: 0 1.5rem 2rem rgba($color-black, 0.2);
     transition: all 0.3s ease-out;

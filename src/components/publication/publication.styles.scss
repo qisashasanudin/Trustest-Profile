@@ -1,10 +1,10 @@
-@import '../../sass/main.scss';
+@import "../../sass/main.scss";
 
 .publication {
   color: $color-secondary;
   font-size: 1.2rem;
   border-radius: 15px;
-  background-color: $color-white;
+  background-color: $color-secondary;
   box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
   padding: 2rem 3rem;
   width: 60vw;

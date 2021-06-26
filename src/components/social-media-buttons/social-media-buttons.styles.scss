@@ -1,126 +1,125 @@
-@import '../../sass/main.scss';
-
+@import "../../sass/main.scss";
 
 * {
-    box-sizing: border-box;
-  }
-
-.column {
-    float: left;
-    width: 25%;
-    padding: 0 10px;
+  box-sizing: border-box;
 }
 
-.socialmedia::after{
-    content: "";
-    display: table;
-    clear: both;
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+}
+
+.socialmedia::after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 @media screen and (max-width: 600px) {
-    .column {
-        width: 100%;
-        display: block;
-        margin-bottom: 20px;
-    }
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
 }
 
-.socialmedia{
+.socialmedia {
+  display: flex;
+  align-items: center;
+  width: 30rem;
+  height: 8rem;
+  margin: 0 -5px;
+
+  &_linkedin:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+  }
+
+  &_linkedin {
+    font-size: 3rem;
+    color: $color-accent;
+    background-color: $color-grey-light-0;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 25%;
     display: flex;
+    justify-content: center;
     align-items: center;
-    width: 30rem;
-    height: 8rem;
-    margin: 0 -5px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+    box-shadow: 1px 2px 1px 0.5px #ada4a4;
+    transition: all 0.2s ease-out;
+  }
 
-    &_linkedin:hover {
-        cursor: pointer;
-        transform: scale(1.05);
-    }
+  &_instagram:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+  }
 
-    &_linkedin {
-        font-size: 3rem;
-        color: $color-primary;
-        background-color: $color-grey-light-0;
-        width: fit-content;
-        height: fit-content;
-        border-radius: 25%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-        padding-left: 1.2rem;
-        padding-right: 1.2rem;
-        box-shadow: 1px 2px 1px 0.5px #ada4a4;
-        transition: all 0.2s ease-out;
-    }
+  &_instagram {
+    font-size: 3rem;
+    color: $color-accent;
+    background-color: $color-grey-light-0;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+    box-shadow: 1px 2px 1px 0.5px #ada4a4;
+    transition: all 0.2s ease-out;
+  }
 
-    &_instagram:hover {
-        cursor: pointer;
-        transform: scale(1.05);
-    }
+  &_twitter:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+  }
 
-    &_instagram {
-        font-size: 3rem;
-        color: $color-primary;
-        background-color: $color-grey-light-0;
-        width: fit-content;
-        height: fit-content;
-        border-radius: 25%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-        padding-left: 1.2rem;
-        padding-right: 1.2rem;
-        box-shadow: 1px 2px 1px 0.5px #ada4a4;
-        transition: all 0.2s ease-out;
-    }
+  &_twitter {
+    font-size: 3rem;
+    color: $color-accent;
+    background-color: $color-grey-light-0;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+    box-shadow: 1px 2px 1px 0.5px #ada4a4;
+    transition: all 0.2s ease-out;
+  }
 
-    &_twitter:hover {
-        cursor: pointer;
-        transform: scale(1.05);
-    }
+  &_facebook:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+  }
 
-    &_twitter {
-        font-size: 3rem;
-        color: $color-primary;
-        background-color: $color-grey-light-0;
-        width: fit-content;
-        height: fit-content;
-        border-radius: 25%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-        padding-left: 1.2rem;
-        padding-right: 1.2rem;
-        box-shadow: 1px 2px 1px 0.5px #ada4a4;
-        transition: all 0.2s ease-out;
-    }
-
-    &_facebook:hover {
-        cursor: pointer;
-        transform: scale(1.05);
-    }
-
-    &_facebook {
-        font-size: 3rem;
-        color: $color-primary;
-        background-color: $color-grey-light-0;
-        width: fit-content;
-        height: fit-content;
-        border-radius: 25%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-        padding-left: 1.2rem;
-        padding-right: 1.2rem;
-        box-shadow: 1px 2px 1px 0.5px #ada4a4;
-        transition: all 0.2s ease-out;
-    }
+  &_facebook {
+    font-size: 3rem;
+    color: $color-accent;
+    background-color: $color-grey-light-0;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+    box-shadow: 1px 2px 1px 0.5px #ada4a4;
+    transition: all 0.2s ease-out;
+  }
 }

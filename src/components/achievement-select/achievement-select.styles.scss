@@ -1,4 +1,4 @@
-@import '../../sass/main.scss';
+@import "../../sass/main.scss";
 
 .achievement-select {
   padding-top: 2rem;
@@ -37,7 +37,7 @@
     width: 13rem;
     padding: 0.5rem;
     height: 13rem;
-    background-color: $color-white;
+    background-color: $color-secondary;
     border-radius: 15px;
     box-shadow: 0 1.5rem 2rem rgba($color-black, 0.2);
     transition: all 0.3s ease-out;

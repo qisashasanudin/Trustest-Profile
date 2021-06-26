@@ -16,7 +16,7 @@ const Alumni = () => {
   return (
     <div className="alumni">
       <h1>
-        What Our Alumni Say About AMV UI <div />
+        Who Are We? <div />
       </h1>
 
       <div className="alumni__list">
@@ -29,20 +29,14 @@ const Alumni = () => {
           loop={true}
           pagination={true}
           className="alumni__swiper">
-          {alumni.map((alum) => (
-            <SwiperSlide key={alum.name} className="alumni__slide">
+          {alumni.map((item) => (
+            <SwiperSlide key={item.name} className="alumni__slide">
               <div className="alumni-card">
                 <div className="alumni-card__photo">
-                  <img src={alum.url} alt="alumni" />
-                  <h2>{alum.name}</h2>
-                  <span>{alum.role}</span>
-                </div>
-                <div className="alumni-card__content">
-                  <i className="fas fa-quote-right"></i>
-                  <div className="alumni-card__content--text">
-                    <h2>{alum.title}</h2>
-                    <p>{alum.text}</p>
-                  </div>
+                  <img src={item.url} alt="alumni" />
+                  <h2>{item.name}</h2>
+                  <span>{item.role}</span>
+                  <p>{item.university}</p>
                 </div>
               </div>
             </SwiperSlide>

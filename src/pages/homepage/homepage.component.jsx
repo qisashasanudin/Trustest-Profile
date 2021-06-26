@@ -1,29 +1,22 @@
 import React from 'react';
 import './homepage.styles.scss';
-import background from '../../assets/background-header.svg';
+
 import Header from '../../components/header/header.component';
-import RoboboatVideo from '../../components/roboboat-video/roboboat-video.component';
-import SeeAchievement from '../../components/see-achievement/see-achievement.component';
-import SeeMember from '../../components/see-member/see-member.component';
-import ProductOverview from '../../components/product-overview/product-overview.component';
+// import RoboboatVideo from '../../components/roboboat-video/roboboat-video.component';
+// import SeeAchievement from '../../components/see-achievement/see-achievement.component';
+// import SeeMember from '../../components/see-member/see-member.component';
+// import ProductOverview from '../../components/product-overview/product-overview.component';
 import Footer from '../../components/footer/footer.component';
-import Sponsor from '../../components/sponsor/sponsor.component';
+// import Sponsor from '../../components/sponsor/sponsor.component';
 import Alumni from '../../components/alumni/alumni.component';
 
 const Homepage = () => {
   return (
     <div className="homepage">
-      <div className="homepage__background">
-        <img src={background} alt="header amv" />
-      </div>
       <div className="homepage__header">
         <Header />
       </div>
-
-      <div id="roboboat" className="homepage__roboboat-video">
-        <RoboboatVideo />
-      </div>
-      <div className="homepage__memo">
+      {/* <div className="homepage__memo">
         <div className="memo">
           <img
             src="https://firebasestorage.googleapis.com/v0/b/webamv-c51f6.appspot.com/o/memo%2Fmemo_kkctbn.jpg?alt=media&token=e7ed6148-a424-408c-a128-4178c680e00d"
@@ -45,23 +38,23 @@ const Homepage = () => {
           />
           <p>1st Place ASEAN MATE ROV 2019</p>
         </div>
-      </div>
-      <div className="homepage__see-achievement">
+      </div> */}
+      {/* <div className="homepage__see-achievement">
         <SeeAchievement />
-      </div>
-      <div className="homepage__see-member">
+      </div> */}
+      {/* <div className="homepage__see-member">
         <SeeMember />
-      </div>
+      </div> */}
 
-      <div className="homepage__product-overview">
+      {/* <div className="homepage__product-overview">
         <ProductOverview />
-      </div>
+      </div> */}
       <div className="homepage__alumni">
         <Alumni />
       </div>
-      <div className="homepage__sponsor">
+      {/* <div className="homepage__sponsor">
         <Sponsor />
-      </div>
+      </div> */}
       <div className="homepage__footer">
         <Footer />
       </div>

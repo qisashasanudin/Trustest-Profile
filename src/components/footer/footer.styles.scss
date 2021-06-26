@@ -1,22 +1,21 @@
-@import '../../sass/main.scss';
+@import "../../sass/main.scss";
 
 .footer {
   width: 100vw;
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: $color-grey-dark-2;
-  padding: 1rem 5rem;
+  justify-content: space-around;
+  background-color: $color-primary;
+  padding: 4rem 5rem;
 
   &__logo {
     @include respond(phone) {
       display: none;
     }
-    flex: 1 1 0;
     margin: 1rem;
-
     & > img {
-      width: 50%;
+      width: 100%;
       height: auto;
       display: block;
       margin-left: auto;
@@ -24,42 +23,37 @@
     }
   }
 
-  &__socialmedia {
-    font-size: 2rem;
-    color: $color-grey-light-0;
-    font-family: $font-display;
-    line-height: 1;
-    flex: 1 1 0;
-    margin: 1rem;
-    text-align: center;
-    height: 100px;
-    align-items: center;
-    margin-top: 4rem;
-    @include respond(phone) {
-      margin-top: 3rem;
-    }
+  // &__socialmedia {
+  //   font-size: 2rem;
+  //   color: $color-accent;
+  //   font-family: $font-display;
+  //   line-height: 1;
+  //   flex: 1 1 0;
+  //   margin: 1rem;
+  //   text-align: center;
+  //   height: 100px;
+  //   align-items: center;
+  //   margin-top: 4rem;
+  //   @include respond(phone) {
+  //     margin-top: 3rem;
+  //   }
 
-    &__buttons {
-      @include respond(phone) {
-        margin-top: 1rem;
-      }
-      display: inline-block;
-    }
-  }
+  //   &__buttons {
+  //     @include respond(phone) {
+  //       margin-top: 1rem;
+  //     }
+  //     display: inline-block;
+  //   }
+  // }
 
   &__copyright {
     @include respond(phone) {
       display: none;
     }
     font-size: 1.5rem;
-    color: $color-grey-light-0;
+    color: $color-accent;
     font-family: $font-display;
     line-height: 1;
-    flex: 1 1 0;
-    margin: 1rem;
-    margin-top: 4rem;
-    margin-left: 6rem;
-
     & > p {
       margin: 2rem 0;
     }

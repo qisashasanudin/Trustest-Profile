@@ -1,4 +1,4 @@
-@import '../../sass/main.scss';
+@import "../../sass/main.scss";
 
 .roboboat-video {
   position: relative;
@@ -50,6 +50,7 @@
     width: 90rem;
     font-size: 1.7rem;
     text-align: center;
+    color: $color-secondary;
     @include respond(tab-port) {
       width: 100%;
     }

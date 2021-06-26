@@ -1,14 +1,14 @@
-@import '../../sass/main.scss';
+@import "../../sass/main.scss";
 
 .button-round {
   font-family: $font-primary;
   cursor: pointer;
   padding: 1.2rem 3rem;
-  background-color: $color-grey-dark-2;
+  background-color: $color-tertiary;
   border: none;
   border-radius: 10px;
   font-size: 1.7rem;
-  color: $color-white;
+  color: $color-secondary;
   transition: all 0.3s ease-out;
 
   &:hover,

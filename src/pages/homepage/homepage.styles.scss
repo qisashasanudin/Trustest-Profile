@@ -1,4 +1,4 @@
-@import '../../sass/main.scss';
+@import "../../sass/main.scss";
 
 .homepage {
   width: 100%;
@@ -94,18 +94,13 @@
   }
 
   &__alumni {
-    padding: 0 10rem;
-    margin-top: 10rem;
-    margin-bottom: 4rem;
+    padding: 15rem 10rem;
 
+    background-color: $color-secondary;
     @include respond(phone) {
       padding: 0 5rem;
       margin-bottom: 2rem;
     }
-  }
-
-  &__footer {
-    margin-top: 2rem;
   }
 
   &__memo {

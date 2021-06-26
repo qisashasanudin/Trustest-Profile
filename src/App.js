@@ -1,12 +1,12 @@
-import { Route, Switch } from 'react-router-dom';
-import Navbar from './components/navbar/navbar.component';
-import React from 'react';
-import HomePage from './pages/homepage/homepage.component';
-import './App.scss';
-import ProductPage from './pages/productpage/productpage.component';
-import MemberPage from './pages/memberpage/memberpage.component';
-import AchievementPage from './pages/achievementpage/achievementpage.component';
-import ContactPage from './pages/contactpage/contactpage.component';
+import { Route, Switch } from "react-router-dom";
+import Navbar from "./components/navbar/navbar.component";
+import React from "react";
+import HomePage from "./pages/homepage/homepage.component";
+import "./App.scss";
+import ProductPage from "./pages/productpage/productpage.component";
+import MemberPage from "./pages/memberpage/memberpage.component";
+import AchievementPage from "./pages/achievementpage/achievementpage.component";
+import ContactPage from "./pages/contactpage/contactpage.component";
 
 const App = () => {
   return (
