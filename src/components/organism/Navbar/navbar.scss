@@ -1,0 +1,28 @@
+@import "../../../sass/main.scss";
+
+.navbar {
+  display: flex;
+  width: 100vw;
+  position: fixed;
+  padding: 0.4rem 0;
+  z-index: 999;
+  align-items: center;
+  background-color: $color-white;
+  transition: all 0.3s;
+  &__logo {
+    padding: 0 10rem;
+    @include respond(big-desktop) {
+      padding: 0 10rem;
+    }
+    @include respond(tab-port) {
+      padding: 0 5rem;
+    }
+    @include respond(phone) {
+      padding: 0 4rem;
+    }
+  }
+}
+
+.navbar.active {
+  box-shadow: 1px 1px 15px 8px rgba(0, 0, 0, 0.36);
+}

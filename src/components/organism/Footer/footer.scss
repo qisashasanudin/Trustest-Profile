@@ -1,0 +1,47 @@
+@import "../../../sass/main.scss";
+.footer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 2rem 0;
+  gap: 2rem;
+  border-top: 1px solid $color-black;
+  p {
+    font-weight: 200;
+    color: $color-light-grey;
+  }
+  h3 {
+    color: $color-primary;
+  }
+  &__description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    &__left {
+      display: flex;
+      width: 50%;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-left: 10rem;
+      > h1 {
+        color: $color-primary;
+        > span {
+          color: $color-secondary;
+        }
+      }
+    }
+    &__right {
+      display: flex;
+      justify-content: center;
+      width: 50%;
+      gap: 3rem;
+      &__item {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        text-align: left;
+      }
+    }
+  }
+}

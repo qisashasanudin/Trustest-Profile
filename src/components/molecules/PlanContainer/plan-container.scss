@@ -1,0 +1,35 @@
+@import "../../../sass/main.scss";
+
+.plan-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+  position: absolute;
+  background-color: $color-white;
+  border: 2px solid #dddddd;
+  padding: 3rem;
+  box-sizing: border-box;
+  box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  > img {
+    width: 150px;
+    height: 150px;
+  }
+  > h3 {
+    font-size: 18px;
+  }
+  &__benefits {
+    color: $color-primary;
+    height: 15rem;
+  }
+  > h1 {
+    font-size: 25px;
+    > span {
+      color: $color-primary;
+    }
+  }
+  > button {
+    font-weight: 700;
+  }
+}

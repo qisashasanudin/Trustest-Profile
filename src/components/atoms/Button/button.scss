@@ -1,0 +1,65 @@
+@import "../../../sass/main.scss";
+
+.btn {
+  padding: 8px 20px;
+  border: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  color: white;
+}
+
+.large {
+  height: 4rem;
+  width: 20rem;
+}
+.medium {
+  height: 3rem;
+  width: 10rem;
+}
+
+.normal {
+  border-radius: 0px;
+}
+
+.semi-rounded {
+  border-radius: 10px;
+}
+
+.rounded {
+  border-radius: 30px;
+}
+
+.primary {
+  background-color: $color-primary;
+  border-color: $color-primary;
+}
+.black {
+  background-color: $color-black;
+}
+.yellow {
+  background-color: $color-yellow;
+}
+.green {
+  background-color: $color-green;
+}
+.light-blue-1 {
+  color: $color-light-blue-1;
+  color: $color-black;
+}
+.light-blue-2 {
+  background-color: $color-light-blue-2;
+  color: $color-black;
+}
+.white {
+  background-color: $color-white;
+  color: $color-black;
+}
+
+.rounded-nofill {
+  border-radius: 30px;
+  border: 2px solid;
+  background-color: $color-white;
+  color: $color-primary;
+}
