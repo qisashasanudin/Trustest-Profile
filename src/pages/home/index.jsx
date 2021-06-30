@@ -8,7 +8,38 @@ import { DiamondLogo, FreeLogo } from "../../assets";
 import "./home.scss";
 import { Button } from "../../components/atoms";
 import { PlanContainer } from "../../components/molecules";
+import Carousel from "react-material-ui-carousel";
+import { FotoFerdian, FotoJona, FotoQisas, FotoLithgow } from "../../assets";
+
 const Homepage = () => {
+  var items = [
+    {
+      name: "Jonathan",
+      image: FotoJona,
+      description: "Teknik Komputer 2018",
+    },
+    {
+      name: "Ferdian Julianto",
+      image: FotoFerdian,
+      description: "Teknik Komputer 2018",
+    },
+    {
+      name: "Qisas T. Hasanudin",
+      image: FotoQisas,
+      description: "Teknik Komputer 2018",
+    },
+    {
+      name: "Vincentius I. Lithgow",
+      image: FotoLithgow,
+      description: "Teknik Komputer 2018",
+    },
+    {
+      name: "Nathaniel Faustine",
+      image:
+        "https://firebasestorage.googleapis.com/v0/b/webamv-c51f6.appspot.com/o/member%2Fmember_nathaniel.JPG?alt=media&token=9005378a-6cba-4eb2-a9e5-4e3f1a997aa6",
+      description: "Teknik Komputer 2018",
+    },
+  ];
   return (
     <div className="homepage">
       <div className="homepage__header">
@@ -102,6 +133,23 @@ const Homepage = () => {
               <p>Premium LMS</p>
             </PlanContainer>
           </div>
+        </div>
+      </div>
+      <div className="homepage__slider">
+        <h1>Our Team</h1>
+        <div className="homepage__slider__carousel">
+          <Carousel>
+            {items.map((item) => {
+              return (
+                <div className="homepage__slider__carousel__item">
+                  <img src={item.image} alt="foto" />
+                  <h3>{item.name}</h3>
+                  <p>{item.description}</p>
+                  <p>Universitas Indonesia</p>
+                </div>
+              );
+            })}
+          </Carousel>
         </div>
       </div>
     </div>
