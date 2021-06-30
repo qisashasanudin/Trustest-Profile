@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useRef } from "react";
+
 import {
   CheckmarkList,
   FeatureIllustration,
@@ -12,6 +13,11 @@ import Carousel from "react-material-ui-carousel";
 import { FotoFerdian, FotoJona, FotoQisas, FotoLithgow } from "../../assets";
 
 const Homepage = () => {
+  const featureRef = useRef(null);
+  const smoothScroll = (e) => {
+    e.preventDefault();
+    featureRef.current.scrollIntoView({ behavior: "smooth" });
+  };
   var items = [
     {
       name: "Jonathan",
@@ -53,10 +59,12 @@ const Homepage = () => {
               intellectual property, the validity of your exam scores, and the
               financial health of your testing operation.
             </p>
+
             <Button
               buttonColor="primary"
               buttonStyle="semi-rounded"
               buttonSize="large"
+              onClick={(e) => smoothScroll(e)}
             >
               Get Started
             </Button>
@@ -66,7 +74,7 @@ const Homepage = () => {
           <img src={HeaderIllustration} alt="illustration" />
         </div>
       </div>
-      <div className="homepage__feature">
+      <div className="homepage__feature" ref={featureRef}>
         <div className="homepage__feature__left">
           <img src={FeatureIllustration} alt="illustration" />
         </div>
