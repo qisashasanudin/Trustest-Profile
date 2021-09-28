@@ -6,8 +6,16 @@ import { Button } from "../../components/atoms";
 
 const ExamPrep = () => {
   return (
-    <div className="exam__prep">
+    <div className="examprep">
       <h1>Exam Preparation</h1>
+      <Button
+        buttonColor="primary"
+        buttonStyle="semi-rounded"
+        buttonSize="large"
+        // onClick={routeToExamPrep}
+      >
+        Start Attempt
+      </Button>
     </div>
   );
 };
