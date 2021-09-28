@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { useHistory } from "react-router-dom";
 
 import {
   CheckmarkList,
@@ -14,9 +15,13 @@ import { FotoFerdian, FotoJona, FotoQisas, FotoLithgow } from "../../assets";
 
 const Homepage = () => {
   const featureRef = useRef(null);
-  const smoothScroll = (e) => {
-    e.preventDefault();
-    featureRef.current.scrollIntoView({ behavior: "smooth" });
+  // const smoothScroll = (e) => {
+  //   e.preventDefault();
+  //   featureRef.current.scrollIntoView({ behavior: "smooth" });
+  // };
+  let history = useHistory();
+  const routeToExamPrep = () => {
+    history.push("/exam_prep");
   };
   var items = [
     {
@@ -64,7 +69,8 @@ const Homepage = () => {
               buttonColor="primary"
               buttonStyle="semi-rounded"
               buttonSize="large"
-              onClick={(e) => smoothScroll(e)}
+              // onClick={(e) => smoothScroll(e)}
+              onClick={routeToExamPrep}
             >
               Get Started
             </Button>
