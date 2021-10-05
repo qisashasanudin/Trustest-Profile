@@ -1,4 +1,4 @@
-import { FormGroup, FormControlLabel, Checkbox, Box } from "@mui/material";
+import { FormControlLabel, Checkbox } from "@mui/material";
 import { Videocam, Mic } from "@mui/icons-material";
 
 const Agreements = () => {
