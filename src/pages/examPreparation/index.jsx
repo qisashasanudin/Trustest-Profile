@@ -24,6 +24,7 @@ const steps = [
 
 const ExamPrep = () => {
   const [activeStep, setActiveStep] = React.useState(0);
+  const [agreementCheckBox, setAgreementCheckBox] = React.useState(false);
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -66,7 +67,10 @@ const ExamPrep = () => {
         {activeStep === 0 ? (
           <Preparation />
         ) : activeStep === 1 ? (
-          <Agreements />
+          <Agreements
+            agreementCheckBox={agreementCheckBox}
+            setAgreementCheckBox={setAgreementCheckBox}
+          />
         ) : activeStep === 2 ? (
           <SystemCheck />
         ) : activeStep === 3 ? (
@@ -88,6 +92,7 @@ const ExamPrep = () => {
         <Button
           variant="contained"
           size="large"
+          disabled={activeStep === 1 && agreementCheckBox === false}
           onClick={() => (activeStep < steps.length - 1 ? handleNext() : null)}
           //TODO: null harus diganti jadi routing buat ke page kuis
         >
