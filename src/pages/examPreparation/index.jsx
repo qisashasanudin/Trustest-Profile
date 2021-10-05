@@ -1,43 +1,28 @@
 import React from "react";
 import "./examPreparation.scss";
 
-// imports from material UI
-import {
-  Stepper,
-  Step,
-  StepLabel,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemAvatar,
-  Button,
-} from "@mui/material";
+import { Stepper, Step, StepLabel, Button, Box } from "@mui/material";
 
-import {
-  Wifi as WifiIcon,
-  WbIncandescent as LampIcon,
-  NotificationsOff as MuteIcon,
-} from "@mui/icons-material";
+import QontoConnector from "../../components/atoms/QontoConnector/QontoConnector";
+import Preparation from "../../components/organism/exam_prep_multistep/Preparationn";
 
-let SubjectName = "Pemrosesan Sinyal Multimedia-01 (2021)";
+// =======================================================================================
+
+let subjectName = "Pemrosesan Sinyal Multimedia-01 (2021)";
+let quizName = "Kuis 1";
+const steps = [
+  "Exam Preparation",
+  "Agreement",
+  "System Check",
+  "Take Your Photo",
+  "Exam Rules",
+];
 
 const ExamPrep = () => {
   const [activeStep, setActiveStep] = React.useState(0);
-  const [skipped, setSkipped] = React.useState(new Set());
-
-  const isStepSkipped = (step) => {
-    return skipped.has(step);
-  };
 
   const handleNext = () => {
-    let newSkipped = skipped;
-    if (isStepSkipped(activeStep)) {
-      newSkipped = new Set(newSkipped.values());
-      newSkipped.delete(activeStep);
-    }
-
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped(newSkipped);
   };
 
   const handleBack = () => {
@@ -49,75 +34,51 @@ const ExamPrep = () => {
       <div className="examprep__navbar_margin"></div>
 
       <div className="examprep__stepper">
-        <Stepper activeStep={activeStep} alternativeLabel>
-          <Step>
-            <StepLabel>Exam Preparation</StepLabel>
-          </Step>
-          <Step>
-            <StepLabel>Agreement</StepLabel>
-          </Step>
-          <Step>
-            <StepLabel>System Check</StepLabel>
-          </Step>
-          <Step>
-            <StepLabel>Take Your Photo</StepLabel>
-          </Step>
-          <Step>
-            <StepLabel>Exam Rules</StepLabel>
-          </Step>
+        <Stepper
+          activeStep={activeStep}
+          alternativeLabel
+          connector={<QontoConnector />}
+        >
+          {steps.map((label, index) => {
+            const stepProps = {};
+            const labelProps = {};
+
+            return (
+              <Step key={label} {...stepProps}>
+                <StepLabel {...labelProps}>{label}</StepLabel>
+              </Step>
+            );
+          })}
         </Stepper>
       </div>
 
       <div className="examprep__header">
-        <h1>Exam Preparation</h1>
-        <p>{SubjectName}</p>
+        <h1>{steps[activeStep]}</h1>
+        <p>{subjectName}</p>
+        <p>{quizName}</p>
       </div>
 
-      <div className="examprep__list_items">
-        <List sx={{ width: "100%" }}>
-          <ListItem>
-            <ListItemAvatar>
-              <WifiIcon color="black" fontSize="large" />
-            </ListItemAvatar>
-            <ListItemText
-              primary="Stable Internet Connection"
-              secondary="Please ensure you have a stable internet connection."
-            />
-          </ListItem>
-
-          <ListItem>
-            <ListItemAvatar>
-              <LampIcon color="black" fontSize="large" />
-            </ListItemAvatar>
-            <ListItemText
-              primary="Good Lighting"
-              secondary="Please ensure your room has good lighting."
-            />
-          </ListItem>
-
-          <ListItem>
-            <ListItemAvatar>
-              <MuteIcon color="black" fontSize="large" />
-            </ListItemAvatar>
-            <ListItemText
-              primary="Keep Silent and Don’t be Interrupted"
-              secondary="Please keep silent and make sure you are not interrupted during the test, as the timer cannot be paused once started."
-            />
-          </ListItem>
-        </List>
+      <div className="examprep__content">
+        <Preparation />
       </div>
 
       <div className="examprep__nav_buttons">
         <Button
-          variant="contained"
+          variant="outlined"
           size="large"
           disabled={activeStep <= 0}
-          onClick={() => handleBack()}
+          onClick={handleBack}
         >
           Back
         </Button>
-        <Button variant="contained" size="large" onClick={() => handleNext()}>
-          Continue
+        <Box sx={{ flex: "0.025 1 auto" }} />
+        <Button
+          variant="contained"
+          size="large"
+          onClick={() => (activeStep < steps.length - 1 ? handleNext() : null)}
+          //TODO: null diganti jadi routing buat ke page kuis
+        >
+          {activeStep === steps.length - 1 ? "Start Attempt" : "Next"}
         </Button>
       </div>
     </div>
