@@ -1,12 +1,10 @@
-import React from "react";
+import { List, ListItem, ListItemText, ListItemAvatar } from "@mui/material";
 
 import {
   Wifi as WifiIcon,
   WbIncandescent as LampIcon,
   NotificationsOff as MuteIcon,
 } from "@mui/icons-material";
-
-import { List, ListItem, ListItemText, ListItemAvatar } from "@mui/material";
 
 const Preparation = () => {
   return (

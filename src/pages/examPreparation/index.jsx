@@ -1,10 +1,11 @@
 import React from "react";
 import "./examPreparation.scss";
 
-import { Stepper, Step, StepLabel, Button, Box } from "@mui/material";
+import { Stepper, Step, StepLabel, Button } from "@mui/material";
 
 import QontoConnector from "../../components/atoms/QontoConnector/QontoConnector";
 import Preparation from "../../components/organism/exam_prep_multistep/Preparation";
+import Agreements from "../../components/organism/exam_prep_multistep/Agreements";
 
 // =======================================================================================
 
@@ -59,7 +60,7 @@ const ExamPrep = () => {
       </div>
 
       <div className="examprep__content">
-        <Preparation />
+        {activeStep === 0 ? <Preparation /> : <Agreements />}
       </div>
 
       <div className="examprep__nav_buttons">
@@ -71,12 +72,11 @@ const ExamPrep = () => {
         >
           Back
         </Button>
-        <Box sx={{ flex: "0.025 1 auto" }} />
         <Button
           variant="contained"
           size="large"
           onClick={() => (activeStep < steps.length - 1 ? handleNext() : null)}
-          //TODO: null diganti jadi routing buat ke page kuis
+          //TODO: null harus diganti jadi routing buat ke page kuis
         >
           {activeStep === steps.length - 1 ? "Start Attempt" : "Next"}
         </Button>

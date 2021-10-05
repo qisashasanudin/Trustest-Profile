@@ -1,9 +1,10 @@
 @import "../../sass/main.scss";
 
 .examprep {
-  display: grid;
-  position: relative;
+  display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
   font-family: $font-primary;
 
   &__navbar_margin {
@@ -11,13 +12,13 @@
   }
 
   &__stepper {
-    margin: 2rem;
-    animation: moveInTop 0.6s;
+    padding: 2rem;
+    animation: moveInTop 0.4s;
   }
 
   &__header {
-    margin: 1rem;
-    animation: moveInRight 0.8s;
+    padding: 1rem 0;
+    animation: moveInRight 0.6s;
 
     > h1 {
       text-transform: uppercase;
@@ -32,17 +33,17 @@
   }
 
   &__content {
-    padding: 0;
-    margin: 1rem;
-    animation: moveInRight 1s;
+    padding: 2rem;
+    animation: moveInRight 0.8s;
   }
 
   &__nav_buttons {
-    display: flex;
-    justify-content: center;
     flex-direction: row;
-    padding-bottom: 6rem;
-    margin: 2rem;
-    animation: moveInBottom 0.6s;
+    padding: 2rem 0 8rem 0;
+    animation: moveInBottom 0.4s;
+
+    > Button {
+      margin: 0 0.5rem;
+    }
   }
 }
