@@ -2,20 +2,13 @@ import React from "react";
 
 // import { DiamondLogo, FreeLogo } from "../../assets";
 import "./examPreparation.scss";
-import { Button } from "../../components/atoms";
+import Button from "@mui/material/Button";
 
 const ExamPrep = () => {
   return (
     <div className="examprep">
       <h1>Exam Preparation</h1>
-      <Button
-        buttonColor="primary"
-        buttonStyle="semi-rounded"
-        buttonSize="large"
-        // onClick={routeToExamPrep}
-      >
-        Start Attempt
-      </Button>
+      <Button variant="contained">Continue</Button>
     </div>
   );
 };
