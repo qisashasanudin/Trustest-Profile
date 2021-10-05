@@ -1,29 +1,79 @@
 import React from "react";
-
-// import { DiamondLogo, FreeLogo } from "../../assets";
 import "./examPreparation.scss";
 
-import { List, ListItem, ListItemText, ListItemAvatar } from "@mui/material";
+// imports from material UI
+import {
+  Stepper,
+  Step,
+  StepLabel,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemAvatar,
+  Button,
+} from "@mui/material";
+
 import {
   Wifi as WifiIcon,
   WbIncandescent as LampIcon,
   NotificationsOff as MuteIcon,
 } from "@mui/icons-material";
 
-import Button from "@mui/material/Button";
-
-let PageTitle = "Exam Preparation";
 let SubjectName = "Pemrosesan Sinyal Multimedia-01 (2021)";
 
 const ExamPrep = () => {
+  const [activeStep, setActiveStep] = React.useState(0);
+  const [skipped, setSkipped] = React.useState(new Set());
+
+  const isStepSkipped = (step) => {
+    return skipped.has(step);
+  };
+
+  const handleNext = () => {
+    let newSkipped = skipped;
+    if (isStepSkipped(activeStep)) {
+      newSkipped = new Set(newSkipped.values());
+      newSkipped.delete(activeStep);
+    }
+
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    setSkipped(newSkipped);
+  };
+
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
   return (
     <div className="examprep">
+      <div className="examprep__navbar_margin"></div>
+
+      <div className="examprep__stepper">
+        <Stepper activeStep={activeStep} alternativeLabel>
+          <Step>
+            <StepLabel>Exam Preparation</StepLabel>
+          </Step>
+          <Step>
+            <StepLabel>Agreement</StepLabel>
+          </Step>
+          <Step>
+            <StepLabel>System Check</StepLabel>
+          </Step>
+          <Step>
+            <StepLabel>Take Your Photo</StepLabel>
+          </Step>
+          <Step>
+            <StepLabel>Exam Rules</StepLabel>
+          </Step>
+        </Stepper>
+      </div>
+
       <div className="examprep__header">
-        <h1>{PageTitle}</h1>
+        <h1>Exam Preparation</h1>
         <p>{SubjectName}</p>
       </div>
 
-      <div className="examprep__listitems">
+      <div className="examprep__list_items">
         <List sx={{ width: "100%" }}>
           <ListItem>
             <ListItemAvatar>
@@ -57,8 +107,16 @@ const ExamPrep = () => {
         </List>
       </div>
 
-      <div className="examprep__nextbutton">
-        <Button variant="contained" size="large">
+      <div className="examprep__nav_buttons">
+        <Button
+          variant="contained"
+          size="large"
+          disabled={activeStep <= 0}
+          onClick={() => handleBack()}
+        >
+          Back
+        </Button>
+        <Button variant="contained" size="large" onClick={() => handleNext()}>
           Continue
         </Button>
       </div>

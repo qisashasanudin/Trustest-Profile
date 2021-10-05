@@ -6,9 +6,18 @@
   justify-content: center;
   font-family: $font-primary;
 
-  &__header {
+  &__navbar_margin {
     padding-top: 6rem;
+  }
+
+  &__stepper {
     margin: 2rem;
+    animation: moveInTop 0.6s;
+  }
+
+  &__header {
+    margin: 2rem;
+    animation: moveInRight 0.8s;
 
     > h1 {
       text-transform: uppercase;
@@ -17,17 +26,20 @@
       margin: 0;
     }
     > p {
-      color: #b0b0b0;
       padding: 0;
       margin: 0;
     }
   }
 
-  &__listitems {
+  &__list_items {
+    padding: 0;
+    margin: 0;
+    animation: moveInRight 1s;
   }
 
-  &__nextbutton {
+  &__nav_buttons {
     padding-bottom: 3rem;
     margin: 3rem;
+    animation: moveInBottom 0.6s;
   }
 }

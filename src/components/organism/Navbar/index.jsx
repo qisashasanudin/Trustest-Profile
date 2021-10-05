@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./navbar.scss";
 import { Logo } from "../../../assets";
+import { useHistory } from "react-router-dom";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -14,9 +15,15 @@ const Navbar = () => {
   useEffect(() => {
     window.addEventListener("scroll", changeBackground);
   }, [scrolled]);
+
+  let history = useHistory();
+  const routeToHomepage = () => {
+    history.push("/");
+  };
+
   return (
     <div className={`navbar ${scrolled ? "active" : ""} `}>
-      <div className="navbar__logo" onClick={() => this.handleChange("/")}>
+      <div className="navbar__logo" onClick={routeToHomepage}>
         <img src={Logo} alt="Logo" />
       </div>
     </div>

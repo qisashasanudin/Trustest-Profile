@@ -9,8 +9,9 @@ const WebGazerTrial = () => {
       })
       .begin();
   }, [webgazer]);
+
   return (
-    <div className="webgazer" style={{ paddingTop: "20em" }}>
+    <div className="webgazer" style={{ paddingTop: "6rem" }}>
       <h1>Hello World</h1>
       <button
         onClick={() => {
