@@ -6,6 +6,9 @@ import { Stepper, Step, StepLabel, Button } from "@mui/material";
 import QontoConnector from "../../components/atoms/QontoConnector/QontoConnector";
 import Preparation from "../../components/organism/exam_prep_multistep/Preparation";
 import Agreements from "../../components/organism/exam_prep_multistep/Agreements";
+import SystemCheck from "../../components/organism/exam_prep_multistep/SystemCheck";
+import TakePicture from "../../components/organism/exam_prep_multistep/TakePicture";
+import Rules from "../../components/organism/exam_prep_multistep/Rules";
 
 // =======================================================================================
 
@@ -13,7 +16,7 @@ let subjectName = "Pemrosesan Sinyal Multimedia-01 (2021)";
 let quizName = "Kuis 1";
 const steps = [
   "Exam Preparation",
-  "Agreement",
+  "Agreements",
   "System Check",
   "Take Your Photo",
   "Exam Rules",
@@ -60,7 +63,17 @@ const ExamPrep = () => {
       </div>
 
       <div className="examprep__content">
-        {activeStep === 0 ? <Preparation /> : <Agreements />}
+        {activeStep === 0 ? (
+          <Preparation />
+        ) : activeStep === 1 ? (
+          <Agreements />
+        ) : activeStep === 2 ? (
+          <SystemCheck />
+        ) : activeStep === 3 ? (
+          <TakePicture />
+        ) : (
+          <Rules />
+        )}
       </div>
 
       <div className="examprep__nav_buttons">
