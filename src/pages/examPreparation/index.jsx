@@ -4,7 +4,7 @@ import "./examPreparation.scss";
 import { Stepper, Step, StepLabel, Button, Box } from "@mui/material";
 
 import QontoConnector from "../../components/atoms/QontoConnector/QontoConnector";
-import Preparation from "../../components/organism/exam_prep_multistep/Preparationn";
+import Preparation from "../../components/organism/exam_prep_multistep/Preparation";
 
 // =======================================================================================
 
