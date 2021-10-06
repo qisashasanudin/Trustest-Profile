@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Homepage from "./pages/home";
 import Navbar from "./components/organism/Navbar";
 import Footer from "./components/organism/Footer";
-import ExamPrep from "./pages/examPreparation";
+import ExamPreparation from "./pages/examPreparation";
 import WebGazerTrial from "./pages/examInProgress";
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path="/" component={Homepage} />
-          <Route path="/exam_prep" component={ExamPrep} />
+          <Route path="/exam_prep" component={ExamPreparation} />
           <Route path="/webgazer" component={WebGazerTrial} />
         </Switch>
         <Footer />

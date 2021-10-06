@@ -3,11 +3,7 @@ import React from "react";
 import { FormControlLabel, Checkbox } from "@mui/material";
 import { Videocam, Mic } from "@mui/icons-material";
 
-const Agreements = ({ agreementCheckBox, setAgreementCheckBox }) => {
-  const handleChange = (event) => {
-    setAgreementCheckBox(event.target.checked);
-  };
-
+const Agreements = ({ agree, setAgree }) => {
   return (
     <div>
       <Videocam sx={{ fontSize: 100 }} />
@@ -21,7 +17,12 @@ const Agreements = ({ agreementCheckBox, setAgreementCheckBox }) => {
 
       <FormControlLabel
         control={
-          <Checkbox checked={agreementCheckBox} onChange={handleChange} />
+          <Checkbox
+            checked={agree}
+            onChange={(event) => {
+              setAgree(event.target.checked);
+            }}
+          />
         }
         label="I agree (Terms and Conditions)"
       />

@@ -1,4 +1,5 @@
 import React from "react";
+import { CSSTransition, SwitchTransition } from "react-transition-group";
 import "./examPreparation.scss";
 
 import { Stepper, Step, StepLabel, Button } from "@mui/material";
@@ -12,27 +13,33 @@ import Rules from "../../components/organism/exam_prep_multistep/Rules";
 
 // =======================================================================================
 
-let subjectName = "Pemrosesan Sinyal Multimedia-01 (2021)";
-let quizName = "Kuis 1";
-const steps = [
-  "Exam Preparation",
-  "Agreements",
-  "System Check",
-  "Take Your Photo",
-  "Exam Rules",
-];
-
-const ExamPrep = () => {
+const ExamPreparation = () => {
   const [activeStep, setActiveStep] = React.useState(0);
-  const [agreementCheckBox, setAgreementCheckBox] = React.useState(false);
+  const [slideDir, setSlideDir] = React.useState("slideleft");
+  const [agree, setAgree] = React.useState(false);
 
   const handleNext = () => {
+    setSlideDir("slideleft");
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
   const handleBack = () => {
+    setSlideDir("slideright");
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
+
+  let subjectName = "Pemrosesan Sinyal Multimedia-01 (2021)";
+  let quizName = "Kuis 1";
+  const steps = [
+    { title: "Exam Preparation", content: <Preparation /> },
+    {
+      title: "Agreements",
+      content: <Agreements agree={agree} setAgree={setAgree} />,
+    },
+    { title: "System Check", content: <SystemCheck /> },
+    { title: "Take Your Photo", content: <TakePicture /> },
+    { title: "Exam Rules", content: <Rules /> },
+  ];
 
   return (
     <div className="examprep">
@@ -41,16 +48,16 @@ const ExamPrep = () => {
       <div className="examprep__stepper">
         <Stepper
           activeStep={activeStep}
-          alternativeLabel
           connector={<QontoConnector />}
+          alternativeLabel
         >
           {steps.map((label, index) => {
             const stepProps = {};
             const labelProps = {};
 
             return (
-              <Step key={label} {...stepProps}>
-                <StepLabel {...labelProps}>{label}</StepLabel>
+              <Step key={label.title} {...stepProps}>
+                <StepLabel {...labelProps}>{label.title}</StepLabel>
               </Step>
             );
           })}
@@ -58,26 +65,17 @@ const ExamPrep = () => {
       </div>
 
       <div className="examprep__header">
-        <h1>{steps[activeStep]}</h1>
+        <h1>{steps[activeStep].title}</h1>
         <p>{subjectName}</p>
         <p>{quizName}</p>
       </div>
 
       <div className="examprep__content">
-        {activeStep === 0 ? (
-          <Preparation />
-        ) : activeStep === 1 ? (
-          <Agreements
-            agreementCheckBox={agreementCheckBox}
-            setAgreementCheckBox={setAgreementCheckBox}
-          />
-        ) : activeStep === 2 ? (
-          <SystemCheck />
-        ) : activeStep === 3 ? (
-          <TakePicture />
-        ) : (
-          <Rules />
-        )}
+        <SwitchTransition>
+          <CSSTransition key={activeStep} classNames={slideDir} timeout={300}>
+            {steps[activeStep].content}
+          </CSSTransition>
+        </SwitchTransition>
       </div>
 
       <div className="examprep__nav_buttons">
@@ -92,7 +90,7 @@ const ExamPrep = () => {
         <Button
           variant="contained"
           size="large"
-          disabled={activeStep === 1 && agreementCheckBox === false}
+          disabled={activeStep === 1 && agree === false}
           onClick={() => (activeStep < steps.length - 1 ? handleNext() : null)}
           //TODO: null harus diganti jadi routing buat ke page kuis
         >
@@ -103,4 +101,4 @@ const ExamPrep = () => {
   );
 };
 
-export default ExamPrep;
+export default ExamPreparation;

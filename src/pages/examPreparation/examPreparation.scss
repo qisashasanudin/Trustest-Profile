@@ -33,11 +33,46 @@
   }
 
   &__content {
-    padding: 2rem;
     animation: moveInRight 0.8s;
+
+    .slideleft-enter {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    .slideleft-enter-active {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+    .slideright-enter {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    .slideright-enter-active {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+
+    .slideleft-exit,
+    .slideright-exit {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .slideleft-exit-active,
+    .slideright-exit-active {
+      opacity: 0;
+      transform: scale(0.75);
+    }
+
+    .slideleft-enter-active,
+    .slideleft-exit-active,
+    .slideright-enter-active,
+    .slideright-exit-active {
+      transition: opacity 300ms, transform 300ms;
+    }
   }
 
   &__nav_buttons {
+    display: flex;
     flex-direction: row;
     padding: 2rem 0 8rem 0;
     animation: moveInBottom 0.4s;
