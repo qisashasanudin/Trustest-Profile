@@ -38,7 +38,14 @@ const ExamPreparation = () => {
     },
     {
       title: "Agreements",
-      content: <Agreements agree={agree} setAgree={setAgree} />,
+      content: (
+        <Agreements
+          subjectName={subjectName}
+          quizName={quizName}
+          agree={agree}
+          setAgree={setAgree}
+        />
+      ),
     },
     { title: "System Check", content: <SystemCheck /> },
     { title: "Take Your Photo", content: <TakePicture /> },
