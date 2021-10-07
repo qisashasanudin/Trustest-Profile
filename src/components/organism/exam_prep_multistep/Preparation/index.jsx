@@ -6,13 +6,13 @@ import {
   NotificationsOff as MuteIcon,
 } from "@mui/icons-material";
 
-const Preparation = () => {
+const Preparation = ({ subjectName, quizName }) => {
   return (
     <div>
       <div className="examprep__steps__header">
         <h1>Exam Preparation</h1>
-        <p>Pemrosesan Sinyal Multimedia-01 (2021)</p>
-        <p>Kuis 1</p>
+        <p>{subjectName}</p>
+        <p>{quizName}</p>
       </div>
       <div className="examprep__steps__content">
         <List sx={{ width: "100%" }}>

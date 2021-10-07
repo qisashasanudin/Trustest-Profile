@@ -28,8 +28,14 @@ const ExamPreparation = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
+  let subjectName = "Pemrosesan Sinyal Multimedia-01 (2021)";
+  let quizName = "Kuis 1";
+
   const steps = [
-    { title: "Exam Preparation", content: <Preparation /> },
+    {
+      title: "Exam Preparation",
+      content: <Preparation subjectName={subjectName} quizName={quizName} />,
+    },
     {
       title: "Agreements",
       content: <Agreements agree={agree} setAgree={setAgree} />,
