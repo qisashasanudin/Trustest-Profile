@@ -28,8 +28,6 @@ const ExamPreparation = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  let subjectName = "Pemrosesan Sinyal Multimedia-01 (2021)";
-  let quizName = "Kuis 1";
   const steps = [
     { title: "Exam Preparation", content: <Preparation /> },
     {
@@ -64,16 +62,16 @@ const ExamPreparation = () => {
         </Stepper>
       </div>
 
-      <div className="examprep__header">
-        <h1>{steps[activeStep].title}</h1>
-        <p>{subjectName}</p>
-        <p>{quizName}</p>
-      </div>
-
-      <div className="examprep__content">
-        <SwitchTransition>
-          <CSSTransition key={activeStep} classNames={slideDir} timeout={300}>
-            {steps[activeStep].content}
+      <div className="examprep__steps">
+        <SwitchTransition mode="out-in">
+          <CSSTransition
+            in={true}
+            appear={true}
+            key={activeStep}
+            classNames={slideDir}
+            timeout={300}
+          >
+            <div>{steps[activeStep].content}</div>
           </CSSTransition>
         </SwitchTransition>
       </div>

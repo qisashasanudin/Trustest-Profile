@@ -16,58 +16,94 @@
     animation: moveInTop 0.4s;
   }
 
-  &__header {
-    padding: 1rem 0;
-    animation: moveInRight 0.6s;
+  &__steps {
+    max-width: 800px;
 
-    > h1 {
-      text-transform: uppercase;
-      color: $color-primary;
-      padding: 0;
-      margin: 0;
-    }
-    > p {
-      padding: 0;
-      margin: 0;
-    }
-  }
+    .slideleft {
+      &-appear {
+        opacity: 0;
+        transform: translateX(50%);
+      }
+      &-appear-active {
+        opacity: 1;
+        transform: translateX(0%);
+      }
 
-  &__content {
-    animation: moveInRight 0.8s;
+      &-enter {
+        opacity: 0;
+        transform: translateX(50%);
+      }
+      &-enter-active {
+        opacity: 1;
+        transform: translateX(0%);
+      }
 
-    .slideleft-enter {
-      opacity: 0;
-      transform: translateX(100%);
-    }
-    .slideleft-enter-active {
-      opacity: 1;
-      transform: translateX(0%);
-    }
-    .slideright-enter {
-      opacity: 0;
-      transform: translateX(-100%);
-    }
-    .slideright-enter-active {
-      opacity: 1;
-      transform: translateX(0%);
-    }
+      &-exit {
+        opacity: 1;
+        transform: scale(1);
+      }
+      &-exit-active {
+        opacity: 0;
+        transform: scale(0.75);
+      }
 
-    .slideleft-exit,
-    .slideright-exit {
-      opacity: 1;
-      transform: scale(1);
-    }
-    .slideleft-exit-active,
-    .slideright-exit-active {
-      opacity: 0;
-      transform: scale(0.75);
+      &-enter-active,
+      &-appear-active,
+      &-exit-active {
+        transition: opacity 300ms, transform 300ms;
+      }
     }
 
-    .slideleft-enter-active,
-    .slideleft-exit-active,
-    .slideright-enter-active,
-    .slideright-exit-active {
-      transition: opacity 300ms, transform 300ms;
+    .slideright {
+      &-appear {
+        opacity: 0;
+        transform: translateX(-50%);
+      }
+      &-appear-active {
+        opacity: 1;
+        transform: translateX(0%);
+      }
+
+      &-enter {
+        opacity: 0;
+        transform: translateX(-50%);
+      }
+      &-enter-active {
+        opacity: 1;
+        transform: translateX(0%);
+      }
+      &-exit {
+        opacity: 1;
+        transform: scale(1);
+      }
+      &-exit-active {
+        opacity: 0;
+        transform: scale(0.75);
+      }
+
+      &-enter-active,
+      &-appear-active,
+      &-exit-active {
+        transition: opacity 300ms, transform 300ms;
+      }
+    }
+
+    &__header {
+      padding: 1rem 0;
+
+      > h1 {
+        text-transform: uppercase;
+        color: $color-primary;
+        padding: 0;
+        margin: 0;
+      }
+      > p {
+        padding: 0;
+        margin: 0;
+      }
+    }
+
+    &__content {
     }
   }
 
