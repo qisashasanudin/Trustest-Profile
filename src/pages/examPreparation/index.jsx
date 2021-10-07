@@ -42,7 +42,10 @@ const ExamPreparation = () => {
     },
     { title: "System Check", content: <SystemCheck /> },
     { title: "Take Your Photo", content: <TakePicture /> },
-    { title: "Exam Rules", content: <Rules /> },
+    {
+      title: "Exam Rules",
+      content: <Rules subjectName={subjectName} quizName={quizName} />,
+    },
   ];
 
   return (
