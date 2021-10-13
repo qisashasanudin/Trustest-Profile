@@ -82,35 +82,18 @@ const SystemCheck = () => {
 
   beginMicDetect()
 
-  if(micOn){
-    return (
-      <div>
-        <div className="examprep__steps__header">
-          <h1>System Check</h1>
-          <p>TRUSTest is checking your system and environment</p>
-          <div className="examprep__steps__content">
-            <Mic sx={{ fontSize: 100 }} />
-          </div>
+  return (
+    <div>
+      <div className="examprep__steps__header">
+        <h1>System Check</h1>
+        <p>TRUSTest is checking your system and environment</p>
+        <div className="examprep__steps__content">
+          {micOn ? <Mic sx={{ fontSize: 100 }} />: <CircleLoader />}
         </div>
-        <div className="examprep__steps__content"></div>
       </div>
-    );
-  }
-
-  else {
-    return (
-      <div>
-        <div className="examprep__steps__header">
-          <h1>System Check</h1>
-          <p>TRUSTest is checking your system and environment</p>
-          <div className="examprep__steps__content">
-            <CircleLoader />
-          </div>
-        </div>
-        <div className="examprep__steps__content"></div>
-      </div>
-    );
-  }
+      <div className="examprep__steps__content"></div>
+    </div>
+  );
 
   
 };
