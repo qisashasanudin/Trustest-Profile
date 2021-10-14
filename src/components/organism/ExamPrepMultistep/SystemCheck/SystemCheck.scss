@@ -1,0 +1,23 @@
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  &__cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.webcam {
+  margin: 1em;
+}

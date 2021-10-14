@@ -11,14 +11,14 @@ import {
   DoNotDisturb as DoNotIcon,
 } from "@mui/icons-material";
 
-import "./Rules.css";
+import "./Rules.scss";
 
 const Rules = ({ subjectName, quizName }) => {
   let rules = [
     { action: "Open Notebook", isAllowed: true },
     { action: "Use Calculator", isAllowed: true },
     { action: "Write on the scrap paper", isAllowed: true },
-    { action: "Communicate with other examineesr", isAllowed: false },
+    { action: "Communicate with other examinees", isAllowed: false },
     { action: "Copy from other examinees", isAllowed: false },
     { action: "Search the internet for answers", isAllowed: false },
   ];
@@ -35,14 +35,14 @@ const Rules = ({ subjectName, quizName }) => {
           <div className="column">
             <div>You are allowed to: </div>
             <div className="spacer"></div>
-            {rules.map((label, index) => {
-              return label.isAllowed ? (
+            {rules.map((element, index) => {
+              return element.isAllowed ? (
                 <List>
                   <ListItem disablePadding>
                     <ListItemIcon>
                       <CheckIcon color="black" fontSize="large" />
                     </ListItemIcon>
-                    <ListItemText primary={label.action} />
+                    <ListItemText primary={element.action} />
                   </ListItem>
                 </List>
               ) : (
@@ -50,20 +50,18 @@ const Rules = ({ subjectName, quizName }) => {
               );
             })}
           </div>
-          <div className="spacer"></div>
           <Divider orientation="vertical" variant="middle" flexItem />
-          <div className="spacer"></div>
           <div className="column">
             <div>You are not allowed to: </div>
             <div className="spacer"></div>
-            {rules.map((label, index) => {
-              return !label.isAllowed ? (
+            {rules.map((element, index) => {
+              return !element.isAllowed ? (
                 <List>
                   <ListItem disablePadding>
                     <ListItemIcon>
                       <DoNotIcon color="black" fontSize="large" />
                     </ListItemIcon>
-                    <ListItemText primary={label.action} />
+                    <ListItemText primary={element.action} />
                   </ListItem>
                 </List>
               ) : (

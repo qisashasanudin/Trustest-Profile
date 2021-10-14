@@ -5,11 +5,11 @@ import "./examPreparation.scss";
 import { Stepper, Step, StepLabel, Button } from "@mui/material";
 
 import QontoConnector from "../../components/atoms/QontoConnector/QontoConnector";
-import Preparation from "../../components/organism/exam_prep_multistep/Preparation";
-import Agreements from "../../components/organism/exam_prep_multistep/Agreements";
-import SystemCheck from "../../components/organism/exam_prep_multistep/SystemCheck";
-import TakePicture from "../../components/organism/exam_prep_multistep/TakePicture";
-import Rules from "../../components/organism/exam_prep_multistep/Rules";
+import Preparation from "../../components/organism/ExamPrepMultistep/Preparation";
+import Agreements from "../../components/organism/ExamPrepMultistep/Agreements";
+import SystemCheck from "../../components/organism/ExamPrepMultistep/SystemCheck";
+import TakePicture from "../../components/organism/ExamPrepMultistep/TakePicture";
+import Rules from "../../components/organism/ExamPrepMultistep/Rules";
 
 // =======================================================================================
 
@@ -17,6 +17,10 @@ const ExamPreparation = () => {
   const [activeStep, setActiveStep] = React.useState(0);
   const [slideDir, setSlideDir] = React.useState("slideleft");
   const [agree, setAgree] = React.useState(false);
+  const [micOn, setMicOn] = React.useState(false);
+  const [camOn, setCamOn] = React.useState(false);
+  const [speakerOn, setSpeakerOn] = React.useState(false);
+  const [lightOn, setLightOn] = React.useState(false);
 
   const handleNext = () => {
     setSlideDir("slideleft");
@@ -47,7 +51,21 @@ const ExamPreparation = () => {
         />
       ),
     },
-    { title: "System Check", content: <SystemCheck /> },
+    {
+      title: "System Check",
+      content: (
+        <SystemCheck
+          micOn={micOn}
+          setMicOn={setMicOn}
+          camOn={camOn}
+          setCamOn={setCamOn}
+          speakerOn={speakerOn}
+          setSpeakerOn={setSpeakerOn}
+          lightOn={lightOn}
+          setLightOn={setLightOn}
+        />
+      ),
+    },
     { title: "Take Your Photo", content: <TakePicture /> },
     {
       title: "Exam Rules",
@@ -65,13 +83,13 @@ const ExamPreparation = () => {
           connector={<QontoConnector />}
           alternativeLabel
         >
-          {steps.map((label, index) => {
+          {steps.map((element, index) => {
             const stepProps = {};
-            const labelProps = {};
+            const elementProps = {};
 
             return (
-              <Step key={label.title} {...stepProps}>
-                <StepLabel {...labelProps}>{label.title}</StepLabel>
+              <Step key={element.title} {...stepProps}>
+                <StepLabel {...elementProps}>{element.title}</StepLabel>
               </Step>
             );
           })}
@@ -104,7 +122,10 @@ const ExamPreparation = () => {
         <Button
           variant="contained"
           size="large"
-          disabled={activeStep === 1 && agree === false}
+          disabled={
+            (activeStep === 1 && !agree) || (activeStep === 2 && !micOn)
+            //(activeStep === 2 && !(micOn && camOn && speakerOn && lightingOn))
+          }
           onClick={() => (activeStep < steps.length - 1 ? handleNext() : null)}
           //TODO: null harus diganti jadi routing buat ke page kuis
         >
