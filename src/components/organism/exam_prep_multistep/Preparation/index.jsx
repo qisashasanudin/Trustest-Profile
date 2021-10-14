@@ -1,4 +1,4 @@
-import { List, ListItem, ListItemText, ListItemAvatar } from "@mui/material";
+import { List, ListItem, ListItemText, ListItemIcon } from "@mui/material";
 
 import {
   Wifi as WifiIcon,
@@ -17,9 +17,9 @@ const Preparation = ({ subjectName, quizName }) => {
       <div className="examprep__steps__content">
         <List sx={{ width: "100%" }}>
           <ListItem>
-            <ListItemAvatar>
+            <ListItemIcon>
               <WifiIcon color="black" fontSize="large" />
-            </ListItemAvatar>
+            </ListItemIcon>
             <ListItemText
               primary="Stable Internet Connection"
               secondary="Please ensure you have a stable internet connection."
@@ -27,9 +27,9 @@ const Preparation = ({ subjectName, quizName }) => {
           </ListItem>
 
           <ListItem>
-            <ListItemAvatar>
+            <ListItemIcon>
               <LampIcon color="black" fontSize="large" />
-            </ListItemAvatar>
+            </ListItemIcon>
             <ListItemText
               primary="Good Lighting"
               secondary="Please ensure your room has good lighting."
@@ -37,9 +37,9 @@ const Preparation = ({ subjectName, quizName }) => {
           </ListItem>
 
           <ListItem>
-            <ListItemAvatar>
+            <ListItemIcon>
               <MuteIcon color="black" fontSize="large" />
-            </ListItemAvatar>
+            </ListItemIcon>
             <ListItemText
               primary="Keep Silent and Don’t be Interrupted"
               secondary="Please keep silent and make sure you are not interrupted during the test, as the timer cannot be paused once started."
