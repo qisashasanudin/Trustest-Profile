@@ -110,6 +110,7 @@ const SystemCheck = ({
         <div className="examprep__steps__content">
           <div className="webcam">
             <img src={webcamPlaceholder} alt="webcam" />
+            {/* TODO: gambar webcamPlaceholder diganti jadi video dari webcam */}
           </div>
           <div className="row">
             {systemStates.map((element, index) => {

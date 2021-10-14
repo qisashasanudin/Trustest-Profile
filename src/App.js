@@ -4,7 +4,7 @@ import Homepage from "./pages/home";
 import Navbar from "./components/organism/Navbar";
 import Footer from "./components/organism/Footer";
 import ExamPreparation from "./pages/examPreparation";
-import WebGazerTrial from "./pages/examInProgress";
+import ExamInProgress from "./pages/examInProgress";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Homepage} />
           <Route path="/exam_prep" component={ExamPreparation} />
-          <Route path="/webgazer" component={WebGazerTrial} />
+          <Route path="/exam_in_progress" component={ExamInProgress} />
         </Switch>
         <Footer />
       </BrowserRouter>

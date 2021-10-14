@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-const WebGazerTrial = () => {
+const ExamInProgress = () => {
   const webgazer = window.webgazer;
   useEffect(() => {
     webgazer
@@ -31,4 +31,4 @@ const WebGazerTrial = () => {
   );
 };
 
-export default WebGazerTrial;
+export default ExamInProgress;

@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import "./examPreparation.scss";
 
@@ -30,6 +31,11 @@ const ExamPreparation = () => {
   const handleBack = () => {
     setSlideDir("slideright");
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
+  let history = useHistory();
+  const routeToExamInProgress = () => {
+    history.push("/exam_in_progress");
   };
 
   let subjectName = "Pemrosesan Sinyal Multimedia-01 (2021)";
@@ -124,10 +130,13 @@ const ExamPreparation = () => {
           size="large"
           disabled={
             (activeStep === 1 && !agree) || (activeStep === 2 && !micOn)
-            //(activeStep === 2 && !(micOn && camOn && speakerOn && lightingOn))
+            //TODO: ganti line di atas dengan: (activeStep === 2 && !(micOn && camOn && speakerOn && lightingOn))
           }
-          onClick={() => (activeStep < steps.length - 1 ? handleNext() : null)}
-          //TODO: null harus diganti jadi routing buat ke page kuis
+          onClick={() =>
+            activeStep < steps.length - 1
+              ? handleNext()
+              : routeToExamInProgress()
+          }
         >
           {activeStep === steps.length - 1 ? "Start Attempt" : "Next"}
         </Button>
