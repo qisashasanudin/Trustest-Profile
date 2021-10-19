@@ -1,0 +1,40 @@
+:-webkit-full-screen {
+  background-color: yellow;
+}
+
+/* IE11 */
+:-ms-fullscreen {
+  background-color: yellow;
+}
+
+/* Standard syntax */
+:fullscreen {
+  background-color: yellow;
+}
+
+div.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+button {
+  width: 10rem;
+  height: 8vh;
+  margin: 5px 0;
+  transition: 0.6 ease-in-out;
+}
+
+.app__video {
+  width: 400px;
+  height: 200px;
+  margin: 50px 0;
+  outline: none;
+}
+
+@media (min-width: 600) {
+  .app__video {
+    margin-top: 0;
+  }
+}
