@@ -129,7 +129,8 @@ const ExamPreparation = () => {
           variant="contained"
           size="large"
           disabled={
-            (activeStep === 1 && !agree) || (activeStep === 2 && !micOn)
+            (activeStep === 1 && !agree) ||
+            (activeStep === 2 && !(micOn && camOn))
             //TODO: ganti line di atas dengan: (activeStep === 2 && !(micOn && camOn && speakerOn && lightingOn))
           }
           onClick={() =>

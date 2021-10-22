@@ -8,6 +8,7 @@ import FotoJona from "./images/Jona.jfif";
 import FotoFerdian from "./images/Ferdian.jpg";
 import FotoLithgow from "./images/Lithgow.jpg";
 import FotoQisas from "./images/Qisas.jpg";
+import WebcamPlaceholder from "./images/camera-icon-placeholder.jpg";
 
 export {
   Logo,
@@ -20,4 +21,5 @@ export {
   FotoJona,
   FotoQisas,
   FotoLithgow,
+  WebcamPlaceholder,
 };

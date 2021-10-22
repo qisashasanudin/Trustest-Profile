@@ -1,5 +1,5 @@
 import CircleLoader from "../../../atoms/CircleLoader/CircleLoader";
-import React from "react";
+import React, { useRef } from "react";
 import {
   Mic as MicIcon,
   CameraAlt as CamIcon,
@@ -7,7 +7,9 @@ import {
   WbIncandescent as LightIcon,
 } from "@mui/icons-material";
 import "./SystemCheck.scss";
-import webcamPlaceholder from "../../../../assets/images/camera-icon-placeholder.jpg";
+
+import Webcam from "react-webcam";
+import { useState } from "react";
 
 const SystemCheck = ({
   micOn,
@@ -22,6 +24,9 @@ const SystemCheck = ({
   var audioContext;
   var mediaStreamSource = null;
   var meter = null;
+  const [error, setError] = useState();
+
+  const webcamRef = useRef(null);
 
   let systemStates = [
     { name: "Microphone", state: micOn, icon: MicIcon },
@@ -102,6 +107,12 @@ const SystemCheck = ({
 
   beginMicDetect();
 
+  const videoConstraints = {
+    width: 1280,
+    height: 720,
+    facingMode: "user",
+  };
+
   return (
     <div>
       <div className="examprep__steps__header">
@@ -109,8 +120,20 @@ const SystemCheck = ({
         <p>TRUSTest is checking your system and environment</p>
         <div className="examprep__steps__content">
           <div className="webcam">
-            <img src={webcamPlaceholder} alt="webcam" />
-            {/* TODO: gambar webcamPlaceholder diganti jadi video dari webcam */}
+            <h6 style={{ color: "red" }}>{error}</h6>
+            <Webcam
+              audio={false}
+              height={360}
+              ref={webcamRef}
+              onUserMedia={() => setCamOn(true)}
+              onUserMediaError={() => {
+                setCamOn(false);
+                setError("Webcam Permission is not given");
+              }}
+              screenshotFormat="image/jpeg"
+              width={480}
+              videoConstraints={videoConstraints}
+            />
           </div>
           <div className="row">
             {systemStates.map((element, index) => {
