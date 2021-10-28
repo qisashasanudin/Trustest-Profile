@@ -1,11 +1,10 @@
 import React, { useRef, useCallback } from "react";
-import { useState } from "react";
 import Webcam from "react-webcam";
 import { WebcamPlaceholder } from "../../../../assets";
 import "./TakePicture.scss";
+import { Button } from "@mui/material";
 
-const TakePicture = () => {
-  const [image, setImage] = useState(null);
+const TakePicture = ({ image, setImage }) => {
   const videoConstraints = {
     width: 1280,
     height: 720,
@@ -19,7 +18,6 @@ const TakePicture = () => {
 
   return (
     <div>
-      {" "}
       <div className="examprep__steps__header">
         <h1>Take Your Photo</h1>
         <p>Make sure the photo cover all of your face</p>
@@ -28,10 +26,9 @@ const TakePicture = () => {
         <div className="takepicture__cams">
           <Webcam
             audio={false}
-            height={270}
+            height={250}
             ref={webcamRef}
             screenshotFormat="image/jpeg"
-            width={480}
             videoConstraints={videoConstraints}
           />
           {image == null ? (
@@ -40,7 +37,11 @@ const TakePicture = () => {
             <img src={image} alt="camera-icon" />
           )}
         </div>
-        <button onClick={capture}>Take your photo</button>
+        <div className="takepicture__button">
+          <Button variant="contained" onClick={capture}>
+            Take your photo
+          </Button>
+        </div>
       </div>
     </div>
   );

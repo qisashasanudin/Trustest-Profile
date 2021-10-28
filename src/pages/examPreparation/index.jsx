@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import "./examPreparation.scss";
 
-import { Stepper, Step, StepLabel, Button } from "@mui/material";
+import { Stepper, Step, StepLabel, Button, Stack } from "@mui/material";
 
 import QontoConnector from "../../components/atoms/QontoConnector/QontoConnector";
 import Preparation from "../../components/organism/ExamPrepMultistep/Preparation";
@@ -22,6 +22,7 @@ const ExamPreparation = () => {
   const [camOn, setCamOn] = React.useState(false);
   const [speakerOn, setSpeakerOn] = React.useState(false);
   const [lightOn, setLightOn] = React.useState(false);
+  const [image, setImage] = React.useState(null);
 
   const handleNext = () => {
     setSlideDir("slideleft");
@@ -72,7 +73,10 @@ const ExamPreparation = () => {
         />
       ),
     },
-    { title: "Take Your Photo", content: <TakePicture /> },
+    {
+      title: "Take Your Photo",
+      content: <TakePicture image={image} setImage={setImage} />,
+    },
     {
       title: "Exam Rules",
       content: <Rules subjectName={subjectName} quizName={quizName} />,
@@ -117,30 +121,31 @@ const ExamPreparation = () => {
       </div>
 
       <div className="examprep__nav_buttons">
-        <Button
-          variant="outlined"
-          size="large"
-          disabled={activeStep <= 0}
-          onClick={handleBack}
-        >
-          Back
-        </Button>
-        <Button
-          variant="contained"
-          size="large"
-          disabled={
-            (activeStep === 1 && !agree) ||
-            (activeStep === 2 && !(micOn && camOn))
-            //TODO: ganti line di atas dengan: (activeStep === 2 && !(micOn && camOn && speakerOn && lightingOn))
-          }
-          onClick={() =>
-            activeStep < steps.length - 1
-              ? handleNext()
-              : routeToExamInProgress()
-          }
-        >
-          {activeStep === steps.length - 1 ? "Start Attempt" : "Next"}
-        </Button>
+        <Stack spacing={2} direction="row">
+          <Button
+            variant="outlined"
+            disabled={activeStep <= 0}
+            onClick={handleBack}
+          >
+            Back
+          </Button>
+          <Button
+            variant="contained"
+            disabled={
+              (activeStep === 1 && !agree) ||
+              (activeStep === 2 && !(micOn && camOn)) ||
+              (activeStep === 3 && !image)
+              //TODO: ganti line di atas dengan: (activeStep === 2 && !(micOn && camOn && speakerOn && lightingOn))
+            }
+            onClick={() =>
+              activeStep < steps.length - 1
+                ? handleNext()
+                : routeToExamInProgress()
+            }
+          >
+            {activeStep === steps.length - 1 ? "Start Attempt" : "Next"}
+          </Button>
+        </Stack>
       </div>
     </div>
   );

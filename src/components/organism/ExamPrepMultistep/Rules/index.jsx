@@ -34,7 +34,6 @@ const Rules = ({ subjectName, quizName }) => {
         <div className="container">
           <div className="column">
             <div>You are allowed to: </div>
-            <div className="spacer"></div>
             {rules.map((element, index) => {
               return element.isAllowed ? (
                 <List>
@@ -53,7 +52,6 @@ const Rules = ({ subjectName, quizName }) => {
           <Divider orientation="vertical" variant="middle" flexItem />
           <div className="column">
             <div>You are not allowed to: </div>
-            <div className="spacer"></div>
             {rules.map((element, index) => {
               return !element.isAllowed ? (
                 <List>

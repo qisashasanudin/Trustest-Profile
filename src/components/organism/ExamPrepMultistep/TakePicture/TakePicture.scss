@@ -8,11 +8,13 @@
   &__cams {
     display: flex;
     gap: 1em;
-    height: 360px;
     align-items: center;
     img {
-      height: 270px;
-      width: 480px;
+      height: 250px;
     }
+  }
+
+  &__button {
+    padding: 1em;
   }
 }

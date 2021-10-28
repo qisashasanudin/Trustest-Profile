@@ -2,7 +2,6 @@
 
 .examprep {
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
   font-family: $font-primary;
@@ -109,13 +108,7 @@
   }
 
   &__nav_buttons {
-    display: flex;
-    flex-direction: row;
     padding: 2rem 0 8rem 0;
     animation: moveInBottom 0.4s;
-
-    > Button {
-      margin: 0 0.5rem;
-    }
   }
 }

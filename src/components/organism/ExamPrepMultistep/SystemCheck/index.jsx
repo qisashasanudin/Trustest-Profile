@@ -123,7 +123,7 @@ const SystemCheck = ({
             <h6 style={{ color: "red" }}>{error}</h6>
             <Webcam
               audio={false}
-              height={360}
+              height={250}
               ref={webcamRef}
               onUserMedia={() => setCamOn(true)}
               onUserMediaError={() => {
@@ -131,7 +131,6 @@ const SystemCheck = ({
                 setError("Webcam Permission is not given");
               }}
               screenshotFormat="image/jpeg"
-              width={480}
               videoConstraints={videoConstraints}
             />
           </div>
