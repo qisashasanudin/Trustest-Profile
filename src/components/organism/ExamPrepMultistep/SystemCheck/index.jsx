@@ -43,6 +43,7 @@ const SystemCheck = ({
         meter = createAudioMeter(audioContext);
         mediaStreamSource.connect(meter);
         setMicOn(true);
+        setSpeakerOn(true);
       });
     }
   }
@@ -125,9 +126,13 @@ const SystemCheck = ({
               audio={false}
               height={360}
               ref={webcamRef}
-              onUserMedia={() => setCamOn(true)}
+              onUserMedia={() => {
+                setCamOn(true);
+                setLightOn(true);
+              }}
               onUserMediaError={() => {
                 setCamOn(false);
+                setLightOn(false);
                 setError("Webcam Permission is not given");
               }}
               screenshotFormat="image/jpeg"
