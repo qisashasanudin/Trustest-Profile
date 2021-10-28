@@ -14,7 +14,7 @@ const TakePicture = ({ image, setImage }) => {
   const capture = useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot();
     setImage(imageSrc);
-  }, [webcamRef]);
+  }, [webcamRef, setImage]);
 
   return (
     <div>
