@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Homepage from "./pages/home";
-import Navbar from "./components/organism/Navbar";
+// import Navbar from "./components/organism/Navbar";
 import Footer from "./components/organism/Footer";
 import ExamPreparation from "./pages/examPreparation";
 import ExamInProgress from "./pages/examInProgress";
