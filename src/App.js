@@ -5,16 +5,18 @@ import Navbar from "./components/organism/Navbar";
 import Footer from "./components/organism/Footer";
 import ExamPreparation from "./pages/examPreparation";
 import ExamInProgress from "./pages/examInProgress";
+import Dashboard from "./pages/dashboard";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar />
+        {/* <Navbar /> */}
         <Switch>
           <Route exact path="/" component={Homepage} />
-          <Route path="/exam_prep" component={ExamPreparation} />
-          <Route path="/exam_in_progress" component={ExamInProgress} />
+          <Route path="/student/dashboard" component={Dashboard} />
+          <Route path="/student/exam_prep" component={ExamPreparation} />
+          <Route path="/student/exam_in_progress" component={ExamInProgress} />
         </Switch>
         <Footer />
       </BrowserRouter>

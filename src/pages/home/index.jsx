@@ -20,8 +20,8 @@ const Homepage = () => {
   //   featureRef.current.scrollIntoView({ behavior: "smooth" });
   // };
   let history = useHistory();
-  const routeToExamPrep = () => {
-    history.push("/exam_prep");
+  const routeToDashboard = () => {
+    history.push("/student/dashboard");
   };
   var items = [
     {
@@ -70,7 +70,7 @@ const Homepage = () => {
               buttonStyle="semi-rounded"
               buttonSize="large"
               // onClick={(e) => smoothScroll(e)}
-              onClick={routeToExamPrep}
+              onClick={routeToDashboard}
             >
               Get Started
             </Button>
