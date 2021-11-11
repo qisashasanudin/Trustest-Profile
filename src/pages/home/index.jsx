@@ -21,7 +21,7 @@ const Homepage = () => {
   // };
   let history = useHistory();
   const routeToDashboard = () => {
-    history.push("/student/dashboard");
+    history.push("/student/dashboard/");
   };
   var items = [
     {

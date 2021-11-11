@@ -3,13 +3,13 @@ import React from "react";
 import { FormControlLabel, Checkbox } from "@mui/material";
 import { Videocam, Mic } from "@mui/icons-material";
 
-const Agreements = ({ subjectName, quizName, agree, setAgree }) => {
+const Agreements = ({ quiz, agree, setAgree }) => {
   return (
     <div>
       <div className="examprep__steps__header">
         <h1>Agreements</h1>
-        <p>{subjectName}</p>
-        <p>{quizName}</p>
+        <p>{quiz.subjectName}</p>
+        <p>{quiz.quizName}</p>
       </div>
       <div className="examprep__steps__content">
         <Videocam sx={{ fontSize: 100 }} />

@@ -7,10 +7,6 @@
   flex-direction: column;
   font-family: $font-primary;
 
-  &__navbar_margin {
-    padding-top: 6rem;
-  }
-
   &__stepper {
     padding: 2rem;
     animation: moveInTop 0.4s;
@@ -89,7 +85,7 @@
     }
 
     &__header {
-      padding: 1rem 0;
+      padding: 1rem 0 0 0;
 
       > h1 {
         text-transform: uppercase;
@@ -109,7 +105,7 @@
   }
 
   &__nav_buttons {
-    padding: 2rem 0 8rem 0;
+    padding: 2rem 0;
     animation: moveInBottom 0.4s;
   }
 }

@@ -14,12 +14,17 @@ import UserList from "../../components/organism/Dashboard/Users/UserList";
 import UserCreate from "../../components/organism/Dashboard/Users/UserCreate";
 import UserEdit from "../../components/organism/Dashboard/Users/UserEdit";
 
+import CustomRoutes from "./customRoutes";
+
 import "./dashboard.scss";
 
 const Dashboard = () => {
   return (
     <div>
-      <Admin dataProvider={restProvider("http://localhost:3000")}>
+      <Admin
+        customRoutes={CustomRoutes}
+        dataProvider={restProvider("http://localhost:3000")}
+      >
         <Resource name="overview" list={Overview} />
         <Resource name="tests" list={Tests} />
         <Resource name="my results" list={MyResults} />

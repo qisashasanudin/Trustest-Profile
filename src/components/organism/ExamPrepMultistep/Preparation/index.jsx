@@ -6,16 +6,16 @@ import {
   NotificationsOff as MuteIcon,
 } from "@mui/icons-material";
 
-const Preparation = ({ subjectName, quizName }) => {
+const Preparation = ({ quiz }) => {
   return (
     <div>
       <div className="examprep__steps__header">
         <h1>Exam Preparation</h1>
-        <p>{subjectName}</p>
-        <p>{quizName}</p>
+        <p>{quiz.subjectName}</p>
+        <p>{quiz.quizName}</p>
       </div>
       <div className="examprep__steps__content">
-        <List sx={{ width: "100%" }}>
+        <List>
           <ListItem>
             <ListItemIcon>
               <WifiIcon color="black" fontSize="large" />

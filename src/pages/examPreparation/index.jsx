@@ -6,6 +6,7 @@ import "./examPreparation.scss";
 import { Stepper, Step, StepLabel, Button, Stack } from "@mui/material";
 
 import QontoConnector from "../../components/atoms/QontoConnector/QontoConnector";
+import Summary from "../../components/organism/ExamPrepMultistep/Summary";
 import Preparation from "../../components/organism/ExamPrepMultistep/Preparation";
 import Agreements from "../../components/organism/ExamPrepMultistep/Agreements";
 import SystemCheck from "../../components/organism/ExamPrepMultistep/SystemCheck";
@@ -14,7 +15,7 @@ import Rules from "../../components/organism/ExamPrepMultistep/Rules";
 
 // =======================================================================================
 
-const ExamPreparation = () => {
+const ExamPreparation = ({ quiz, onClose }) => {
   const [activeStep, setActiveStep] = React.useState(0);
   const [slideDir, setSlideDir] = React.useState("slideleft");
   const [agree, setAgree] = React.useState(false);
@@ -36,27 +37,21 @@ const ExamPreparation = () => {
 
   let history = useHistory();
   const routeToExamInProgress = () => {
-    history.push("/exam_in_progress");
+    history.push("/exam_in_progress/");
   };
-
-  let subjectName = "Pemrosesan Sinyal Multimedia-01 (2021)";
-  let quizName = "Kuis 1";
 
   const steps = [
     {
+      title: "Summary",
+      content: <Summary quiz={quiz} />,
+    },
+    {
       title: "Exam Preparation",
-      content: <Preparation subjectName={subjectName} quizName={quizName} />,
+      content: <Preparation quiz={quiz} />,
     },
     {
       title: "Agreements",
-      content: (
-        <Agreements
-          subjectName={subjectName}
-          quizName={quizName}
-          agree={agree}
-          setAgree={setAgree}
-        />
-      ),
+      content: <Agreements quiz={quiz} agree={agree} setAgree={setAgree} />,
     },
     {
       title: "System Check",
@@ -79,14 +74,12 @@ const ExamPreparation = () => {
     },
     {
       title: "Exam Rules",
-      content: <Rules subjectName={subjectName} quizName={quizName} />,
+      content: <Rules quiz={quiz} />,
     },
   ];
 
   return (
     <div className="examprep">
-      <div className="examprep__navbar_margin"></div>
-
       <div className="examprep__stepper">
         <Stepper
           activeStep={activeStep}
@@ -124,17 +117,16 @@ const ExamPreparation = () => {
         <Stack spacing={2} direction="row">
           <Button
             variant="outlined"
-            disabled={activeStep <= 0}
-            onClick={handleBack}
+            onClick={activeStep <= 0 ? onClose : handleBack}
           >
             Back
           </Button>
           <Button
             variant="contained"
             disabled={
-              (activeStep === 1 && !agree) ||
-              (activeStep === 2 && !(micOn && camOn)) ||
-              (activeStep === 3 && !image)
+              (activeStep === 2 && !agree) ||
+              (activeStep === 3 && !(micOn && camOn)) ||
+              (activeStep === 4 && !image)
               //TODO: ganti line di atas dengan: (activeStep === 2 && !(micOn && camOn && speakerOn && lightingOn))
             }
             onClick={() =>

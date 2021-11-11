@@ -13,31 +13,22 @@ import {
 
 import "./Rules.scss";
 
-const Rules = ({ subjectName, quizName }) => {
-  let rules = [
-    { action: "Open Notebook", isAllowed: true },
-    { action: "Use Calculator", isAllowed: true },
-    { action: "Write on the scrap paper", isAllowed: true },
-    { action: "Communicate with other examinees", isAllowed: false },
-    { action: "Copy from other examinees", isAllowed: false },
-    { action: "Search the internet for answers", isAllowed: false },
-  ];
-
+const Rules = ({ quiz }) => {
   return (
     <div>
       <div className="examprep__steps__header">
         <h1>Exam Rules</h1>
-        <p>{subjectName}</p>
-        <p>{quizName}</p>
+        <p>{quiz.subjectName}</p>
+        <p>{quiz.quizName}</p>
       </div>
       <div className="examprep__steps__content">
         <div className="container">
           <div className="column">
             <div>You are allowed to: </div>
-            {rules.map((element, index) => {
+            {quiz.rules.map((element, index) => {
               return element.isAllowed ? (
-                <List>
-                  <ListItem disablePadding>
+                <List disablePadding>
+                  <ListItem>
                     <ListItemIcon>
                       <CheckIcon color="black" fontSize="large" />
                     </ListItemIcon>
@@ -49,13 +40,13 @@ const Rules = ({ subjectName, quizName }) => {
               );
             })}
           </div>
-          <Divider orientation="vertical" variant="middle" flexItem />
+          <Divider variant="middle" flexItem />
           <div className="column">
             <div>You are not allowed to: </div>
-            {rules.map((element, index) => {
+            {quiz.rules.map((element, index) => {
               return !element.isAllowed ? (
-                <List>
-                  <ListItem disablePadding>
+                <List disablePadding>
+                  <ListItem>
                     <ListItemIcon>
                       <DoNotIcon color="black" fontSize="large" />
                     </ListItemIcon>

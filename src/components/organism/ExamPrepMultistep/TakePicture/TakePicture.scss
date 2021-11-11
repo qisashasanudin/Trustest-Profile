@@ -7,10 +7,16 @@
 
   &__cams {
     display: flex;
+    flex-direction: row;
     gap: 1em;
     align-items: center;
+
     img {
       height: 250px;
+    }
+
+    @media only screen and (max-width: 1000px) {
+      flex-direction: column;
     }
   }
 
