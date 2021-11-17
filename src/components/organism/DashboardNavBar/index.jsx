@@ -19,7 +19,7 @@ const useStyles = makeStyles({
   },
 });
 
-const ConfigurationMenu = forwardRef<any, any>((props, ref) => {
+const ConfigurationMenu = forwardRef((props, ref) => {
   const translate = useTranslate();
   return (
     <MenuItemLink
@@ -34,13 +34,13 @@ const ConfigurationMenu = forwardRef<any, any>((props, ref) => {
   );
 });
 
-const CustomUserMenu = (props: any) => (
+const CustomUserMenu = (props) => (
   <UserMenu {...props}>
     <ConfigurationMenu />
   </UserMenu>
 );
 
-const CustomAppBar = (props: any) => {
+const CustomAppBar = (props) => {
   const classes = useStyles();
   return (
     <AppBar {...props} elevation={1} userMenu={<CustomUserMenu />}>

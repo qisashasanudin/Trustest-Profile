@@ -6,7 +6,7 @@ export const darkTheme = {
     secondary: {
       main: "#FBBA72",
     },
-    type: "dark" as "dark", // Switching the dark mode on is a single property value change.
+    type: "dark", // Switching the dark mode on is a single property value change.
   },
   //   sidebar: {
   //     width: 200,
@@ -61,7 +61,7 @@ export const lightTheme = {
     background: {
       default: "#fcfcfe",
     },
-    type: "light" as "light",
+    type: "light",
   },
   shape: {
     borderRadius: 10,

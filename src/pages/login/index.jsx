@@ -17,7 +17,7 @@ import { ThemeProvider } from "@material-ui/styles";
 import LockIcon from "@material-ui/icons/Lock";
 import { Notification, useTranslate, useLogin, useNotify } from "react-admin";
 
-import { lightTheme } from "./themes";
+import { lightTheme } from "../../components/atoms/DashboardThemes";
 
 const useStyles = makeStyles((theme) => ({
   main: {
@@ -73,12 +73,7 @@ const renderInput = ({
   />
 );
 
-interface FormValues {
-  username?: string;
-  password?: string;
-}
-
-const { Form } = withTypes<FormValues>();
+const { Form } = withTypes();
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
@@ -86,12 +81,12 @@ const Login = () => {
   const classes = useStyles();
   const notify = useNotify();
   const login = useLogin();
-  const location = useLocation<{ nextPathname: string } | null>();
+  const location = useLocation();
 
-  const handleSubmit = (auth: FormValues) => {
+  const handleSubmit = (auth) => {
     setLoading(true);
     login(auth, location.state ? location.state.nextPathname : "/").catch(
-      (error: Error) => {
+      (error) => {
         setLoading(false);
         notify(
           typeof error === "string"
@@ -113,8 +108,8 @@ const Login = () => {
     );
   };
 
-  const validate = (values: FormValues) => {
-    const errors: FormValues = {};
+  const validate = (values) => {
+    const errors = {};
     if (!values.username) {
       errors.username = translate("ra.validation.required");
     }
@@ -189,7 +184,7 @@ Login.propTypes = {
 // We need to put the ThemeProvider decoration in another component
 // Because otherwise the useStyles() hook used in Login won't get
 // the right theme
-const LoginWithTheme = (props: any) => (
+const LoginWithTheme = (props) => (
   <ThemeProvider theme={createMuiTheme(lightTheme)}>
     <Login {...props} />
   </ThemeProvider>

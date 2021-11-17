@@ -1,4 +1,4 @@
-import CircleLoader from "../../../atoms/CircleLoader/CircleLoader";
+import CircleLoader from "../../../atoms/CircleLoader";
 import React, { useRef } from "react";
 import {
   Mic as MicIcon,

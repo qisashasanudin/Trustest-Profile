@@ -19,6 +19,6 @@
   "include": [
     "src",
     "referensi/layout/Menu.tsx",
-    "src/components/molecules/DashboardLayout/AppBar.tsx"
+    "src/components/organism/DashboardNavBar/AppBar.jsx"
   ]
 }

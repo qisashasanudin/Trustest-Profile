@@ -1,8 +1,11 @@
 import React from "react";
 import { Admin, Resource } from "react-admin";
-import authProvider from "./authProvider";
+
+import Layout from "../../components/atoms/DashboardLayout";
+import CustomRoutes from "../../components/atoms/DashboardCustomRoutes";
+import authProvider from "../../components/atoms/DashboardAuthProvider";
 import restProvider from "ra-data-simple-rest";
-import Layout from "../../components/molecules/DashboardLayout/Layout";
+import LoginWithTheme from "../login";
 
 import {
   Dashboard as DashboardIcon,
@@ -10,11 +13,9 @@ import {
   Assessment as AssessmentIcon,
 } from "@mui/icons-material";
 
-import Overview from "../../components/organism/Dashboard/Overview";
-import Tests from "../../components/organism/Dashboard/Tests";
-import MyResults from "../../components/organism/Dashboard/MyResults";
-
-import CustomRoutes from "./customRoutes";
+import Overview from "../../components/organism/DashboardTabs/Overview";
+import Tests from "../../components/organism/DashboardTabs/Tests";
+import MyResults from "../../components/organism/DashboardTabs/MyResults";
 
 import "./dashboard.scss";
 
@@ -26,6 +27,7 @@ const Dashboard = () => {
         customRoutes={CustomRoutes}
         authProvider={authProvider}
         dataProvider={restProvider("http://localhost:3000")}
+        loginPage={LoginWithTheme}
       >
         <Resource name="overview" list={Overview} icon={DashboardIcon} />
         <Resource name="tests" list={Tests} icon={AssignmentIcon} />
