@@ -7,6 +7,7 @@ import {
   WbIncandescent as LightIcon,
 } from "@mui/icons-material";
 import "./SystemCheck.scss";
+import { Divider } from "@mui/material";
 
 import Webcam from "react-webcam";
 import { useState } from "react";
@@ -119,40 +120,41 @@ const SystemCheck = ({
       <div className="examprep__steps__header">
         <h1>System Check</h1>
         <p>TRUSTest is checking your system and environment</p>
-        <div className="examprep__steps__content">
-          <div className="webcam">
-            <h6 style={{ color: "red" }}>{error}</h6>
-            <Webcam
-              audio={false}
-              height={250}
-              ref={webcamRef}
-              onUserMedia={() => {
-                setCamOn(true);
-                setLightOn(true);
-              }}
-              onUserMediaError={() => {
-                setCamOn(false);
-                setLightOn(false);
-                setError("Webcam Permission is not given");
-              }}
-              screenshotFormat="image/jpeg"
-              videoConstraints={videoConstraints}
-            />
-          </div>
-          <div className="row">
-            {systemStates.map((element, index) => {
-              return (
-                <div className="row__cell">
-                  {element.state ? (
-                    <element.icon sx={{ fontSize: 50, color: "#48CAE4" }} />
-                  ) : (
-                    <CircleLoader />
-                  )}
-                  <div>{element.name}</div>
-                </div>
-              );
-            })}
-          </div>
+      </div>
+      <Divider variant="middle" flexItem />
+      <div className="examprep__steps__content">
+        <div className="webcam">
+          <h6 style={{ color: "red" }}>{error}</h6>
+          <Webcam
+            audio={false}
+            height={250}
+            ref={webcamRef}
+            onUserMedia={() => {
+              setCamOn(true);
+              setLightOn(true);
+            }}
+            onUserMediaError={() => {
+              setCamOn(false);
+              setLightOn(false);
+              setError("Webcam Permission is not given");
+            }}
+            screenshotFormat="image/jpeg"
+            videoConstraints={videoConstraints}
+          />
+        </div>
+        <div className="row">
+          {systemStates.map((element, index) => {
+            return (
+              <div className="row__cell">
+                {element.state ? (
+                  <element.icon sx={{ fontSize: 50, color: "#48CAE4" }} />
+                ) : (
+                  <CircleLoader />
+                )}
+                <div>{element.name}</div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

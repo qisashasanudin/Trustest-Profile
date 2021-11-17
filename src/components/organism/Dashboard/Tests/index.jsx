@@ -33,7 +33,7 @@ const Tests = () => {
       quizName: "Kuis 1",
       startDate: new Date("November 8, 2021 13:00:00"),
       endDate: new Date("November 8, 2021 15:00:00"),
-      timeLimit: 1800,
+      timeLimit: 30,
       students: 245,
       numOfQuestions: 25,
       rules: [
@@ -50,7 +50,7 @@ const Tests = () => {
       quizName: "UTS",
       startDate: new Date("November 9, 2021 13:00:00"),
       endDate: new Date("November 9, 2021 15:00:00"),
-      timeLimit: 3600 * 3,
+      timeLimit: 180,
       students: 150,
       numOfQuestions: 10,
       rules: [

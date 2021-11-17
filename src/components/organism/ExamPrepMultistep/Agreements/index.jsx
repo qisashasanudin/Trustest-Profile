@@ -1,6 +1,6 @@
 import React from "react";
 
-import { FormControlLabel, Checkbox } from "@mui/material";
+import { FormControlLabel, Checkbox, Divider } from "@mui/material";
 import { Videocam, Mic } from "@mui/icons-material";
 
 const Agreements = ({ quiz, agree, setAgree }) => {
@@ -11,6 +11,7 @@ const Agreements = ({ quiz, agree, setAgree }) => {
         <p>{quiz.subjectName}</p>
         <p>{quiz.quizName}</p>
       </div>
+      <Divider variant="middle" flexItem />
       <div className="examprep__steps__content">
         <Videocam sx={{ fontSize: 100 }} />
         <Mic sx={{ fontSize: 100 }} />

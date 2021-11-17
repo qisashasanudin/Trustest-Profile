@@ -2,7 +2,7 @@ import React, { useRef, useCallback } from "react";
 import Webcam from "react-webcam";
 import { WebcamPlaceholder } from "../../../../assets";
 import "./TakePicture.scss";
-import { Button } from "@mui/material";
+import { Button, Divider } from "@mui/material";
 
 const TakePicture = ({ image, setImage }) => {
   const videoConstraints = {
@@ -22,6 +22,7 @@ const TakePicture = ({ image, setImage }) => {
         <h1>Take Your Photo</h1>
         <p>Make sure the photo cover all of your face</p>
       </div>
+      <Divider variant="middle" flexItem />
       <div className="examprep__steps__content takepicture">
         <div className="takepicture__cams">
           <Webcam

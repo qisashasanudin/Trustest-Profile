@@ -1,4 +1,11 @@
-import { ListItem, ListItemText, ListItemIcon, Box, Grid } from "@mui/material";
+import {
+  ListItem,
+  ListItemText,
+  ListItemIcon,
+  Box,
+  Grid,
+  Divider,
+} from "@mui/material";
 
 import {
   DateRange as DateRangeIcon,
@@ -24,7 +31,7 @@ const Preparation = ({ quiz }) => {
     {
       icon: TimerIcon,
       primary: "Time Limit",
-      secondary: quiz.timeLimit / 60 + " minutes",
+      secondary: quiz.timeLimit + " minutes",
     },
     {
       icon: ListIcon,
@@ -44,6 +51,7 @@ const Preparation = ({ quiz }) => {
         <h1>{quiz.quizName}</h1>
         <p>{quiz.subjectName}</p>
       </div>
+      <Divider variant="middle" flexItem />
       <div className="examprep__steps__content">
         <Box sx={{ flexGrow: 1, maxWidth: 600 }}>
           <Grid

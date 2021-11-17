@@ -3,7 +3,14 @@ import { useHistory } from "react-router-dom";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import "./examPreparation.scss";
 
-import { Stepper, Step, StepLabel, Button, Stack } from "@mui/material";
+import {
+  Stepper,
+  Step,
+  StepLabel,
+  Button,
+  Stack,
+  useMediaQuery,
+} from "@mui/material";
 
 import QontoConnector from "../../components/atoms/QontoConnector/QontoConnector";
 import Summary from "../../components/organism/ExamPrepMultistep/Summary";
@@ -24,6 +31,7 @@ const ExamPreparation = ({ quiz, onClose }) => {
   const [speakerOn, setSpeakerOn] = React.useState(false);
   const [lightOn, setLightOn] = React.useState(false);
   const [image, setImage] = React.useState(null);
+  const mobileLayout = useMediaQuery("(max-width:900px)");
 
   const handleNext = () => {
     setSlideDir("slideleft");
@@ -92,7 +100,9 @@ const ExamPreparation = ({ quiz, onClose }) => {
 
             return (
               <Step key={element.title} {...stepProps}>
-                <StepLabel {...elementProps}>{element.title}</StepLabel>
+                <StepLabel {...elementProps}>
+                  {!mobileLayout ? element.title : ""}
+                </StepLabel>
               </Step>
             );
           })}
@@ -126,8 +136,8 @@ const ExamPreparation = ({ quiz, onClose }) => {
             disabled={
               (activeStep === 2 && !agree) ||
               (activeStep === 3 && !(micOn && camOn)) ||
+              //TODO: ganti line di atas dengan: (activeStep === 3 && !(micOn && camOn && speakerOn && lightingOn))
               (activeStep === 4 && !image)
-              //TODO: ganti line di atas dengan: (activeStep === 2 && !(micOn && camOn && speakerOn && lightingOn))
             }
             onClick={() =>
               activeStep < steps.length - 1

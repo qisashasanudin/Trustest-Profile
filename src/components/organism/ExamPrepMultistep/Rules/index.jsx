@@ -21,6 +21,7 @@ const Rules = ({ quiz }) => {
         <p>{quiz.subjectName}</p>
         <p>{quiz.quizName}</p>
       </div>
+      <Divider variant="middle" flexItem />
       <div className="examprep__steps__content">
         <div className="container">
           <div className="column">

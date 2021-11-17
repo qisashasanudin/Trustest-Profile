@@ -1,4 +1,10 @@
-import { List, ListItem, ListItemText, ListItemIcon } from "@mui/material";
+import {
+  List,
+  ListItem,
+  ListItemText,
+  ListItemIcon,
+  Divider,
+} from "@mui/material";
 
 import {
   Wifi as WifiIcon,
@@ -14,6 +20,7 @@ const Preparation = ({ quiz }) => {
         <p>{quiz.subjectName}</p>
         <p>{quiz.quizName}</p>
       </div>
+      <Divider variant="middle" flexItem />
       <div className="examprep__steps__content">
         <List>
           <ListItem>
