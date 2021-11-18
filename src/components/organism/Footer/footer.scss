@@ -1,12 +1,13 @@
 @import "../../../sass/main.scss";
+
 .footer {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  align-items: space-around;
   padding: 2rem 0;
-  gap: 2rem;
+  gap: 3rem;
   border-top: 1px solid $color-black;
-  margin-top: auto;
+
   p {
     font-weight: 200;
     color: $color-light-grey;
@@ -14,17 +15,27 @@
   h3 {
     color: $color-primary;
   }
+
   &__description {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    gap: 3rem;
+
+    @media only screen and (max-width: 600px) {
+      flex-direction: column;
+    }
+
     &__left {
       display: flex;
       width: 50%;
       flex-direction: column;
-      align-items: flex-start;
-      margin-left: 10rem;
+
+      @media only screen and (max-width: 600px) {
+        width: 100%;
+      }
+
       > h1 {
         color: $color-primary;
         > span {
@@ -32,11 +43,17 @@
         }
       }
     }
+
     &__right {
       display: flex;
-      justify-content: center;
       width: 50%;
+      justify-content: center;
       gap: 3rem;
+
+      @media only screen and (max-width: 600px) {
+        width: 100%;
+      }
+
       &__item {
         display: flex;
         justify-content: flex-start;

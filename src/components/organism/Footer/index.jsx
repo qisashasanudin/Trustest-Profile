@@ -25,6 +25,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
+
       <p>
         Copyright 2021 <span>&#183;</span> All Rights Reserved{" "}
         <span>&#183;</span> Trusted

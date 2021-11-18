@@ -59,7 +59,7 @@ export const lightTheme = {
       contrastText: "#fff",
     },
     background: {
-      default: "#fcfcfe",
+      default: "#ffffff",
     },
     type: "light",
   },

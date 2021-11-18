@@ -1,5 +1,6 @@
 // import React from "react";
 import { forwardRef } from "react";
+import { useHistory } from "react-router-dom";
 import { AppBar, UserMenu, MenuItemLink, useTranslate } from "react-admin";
 // import Typography from "@material-ui/core/Typography";
 import SettingsIcon from "@material-ui/icons/Settings";
@@ -21,6 +22,7 @@ const useStyles = makeStyles({
 
 const ConfigurationMenu = forwardRef((props, ref) => {
   const translate = useTranslate();
+
   return (
     <MenuItemLink
       {...props}
@@ -42,6 +44,12 @@ const CustomUserMenu = (props) => (
 
 const CustomAppBar = (props) => {
   const classes = useStyles();
+  let history = useHistory();
+
+  const routeToRoot = () => {
+    history.push("/");
+  };
+
   return (
     <AppBar {...props} elevation={1} userMenu={<CustomUserMenu />}>
       {/* <Typography
@@ -50,7 +58,7 @@ const CustomAppBar = (props) => {
         className={classes.title}
         id="react-admin-title"
       /> */}
-      <img src={Logo} alt="Logo" height={40} />
+      <img src={Logo} alt="Logo" height={40} onClick={routeToRoot} />
       <span className={classes.spacer} />
     </AppBar>
   );
