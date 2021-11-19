@@ -4,8 +4,8 @@
   display: flex;
   flex-direction: column;
   align-items: space-around;
-  padding: 2rem 0;
-  gap: 3rem;
+  padding: 2rem;
+  gap: 2rem;
   border-top: 1px solid $color-black;
 
   p {
@@ -19,9 +19,7 @@
   &__description {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 3rem;
+    align-items: space-around;
 
     @media only screen and (max-width: 600px) {
       flex-direction: column;
@@ -48,7 +46,7 @@
       display: flex;
       width: 50%;
       justify-content: center;
-      gap: 3rem;
+      gap: 2rem;
 
       @media only screen and (max-width: 600px) {
         width: 100%;

@@ -2,10 +2,10 @@ import React from "react";
 import { Admin, Resource } from "react-admin";
 
 import Layout from "../../components/atoms/DashboardLayout";
-import CustomRoutes from "../../components/atoms/DashboardCustomRoutes";
-import authProvider from "../../components/atoms/DashboardAuthProvider";
-import restProvider from "ra-data-simple-rest";
+import DashboardCustomRoutes from "../../components/atoms/DashboardCustomRoutes";
 import LoginWithTheme from "../login";
+
+import { dataProvider, authProvider } from "./providers";
 
 import {
   Dashboard as DashboardIcon,
@@ -17,16 +17,14 @@ import Overview from "../../components/organism/DashboardTabs/Overview";
 import Tests from "../../components/organism/DashboardTabs/Tests";
 import MyResults from "../../components/organism/DashboardTabs/MyResults";
 
-import "./dashboard.scss";
-
 const Dashboard = () => {
   return (
     <div>
       <Admin
         layout={Layout}
-        customRoutes={CustomRoutes}
+        customRoutes={DashboardCustomRoutes}
         authProvider={authProvider}
-        dataProvider={restProvider("http://localhost:3000")}
+        dataProvider={dataProvider}
         loginPage={LoginWithTheme}
       >
         <Resource name="overview" list={Overview} icon={DashboardIcon} />
