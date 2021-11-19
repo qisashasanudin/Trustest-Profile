@@ -14,6 +14,21 @@ import {
 import "./Rules.scss";
 
 const Rules = ({ quiz }) => {
+  const rules = [
+    { action: "Open Notebook", isAllowed: quiz.rules.openBook },
+    { action: "Use Calculator", isAllowed: quiz.rules.useCalculator },
+    { action: "Write on the scrap paper", isAllowed: quiz.rules.scrapPaper },
+    {
+      action: "Communicate with other examinees",
+      isAllowed: quiz.rules.teamwork,
+    },
+    { action: "Copy from other examinees", isAllowed: quiz.rules.plagiarism },
+    {
+      action: "Search the internet for answers",
+      isAllowed: quiz.rules.searchInternet,
+    },
+  ];
+
   return (
     <div>
       <div className="examprep__steps__header">
@@ -26,7 +41,7 @@ const Rules = ({ quiz }) => {
         <div className="container">
           <div className="column">
             <div>You are allowed to: </div>
-            {quiz.rules.map((element, index) => {
+            {rules.map((element, index) => {
               return element.isAllowed ? (
                 <List disablePadding>
                   <ListItem>
@@ -44,7 +59,7 @@ const Rules = ({ quiz }) => {
           <Divider variant="middle" flexItem />
           <div className="column">
             <div>You are not allowed to: </div>
-            {quiz.rules.map((element, index) => {
+            {rules.map((element, index) => {
               return !element.isAllowed ? (
                 <List disablePadding>
                   <ListItem>

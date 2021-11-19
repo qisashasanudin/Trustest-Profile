@@ -5,17 +5,20 @@ import Layout from "../../components/atoms/DashboardLayout";
 import DashboardCustomRoutes from "../../components/atoms/DashboardCustomRoutes";
 import LoginWithTheme from "../login";
 
-import { dataProvider, authProvider } from "./providers";
+import { dataProvider, authProvider } from "../../providers";
 
 import {
+  People as UserIcon,
   Dashboard as DashboardIcon,
   Assignment as AssignmentIcon,
   Assessment as AssessmentIcon,
 } from "@mui/icons-material";
 
-import Overview from "../../components/organism/DashboardTabs/Overview";
-import Tests from "../../components/organism/DashboardTabs/Tests";
-import MyResults from "../../components/organism/DashboardTabs/MyResults";
+import Overview from "./Overview";
+import Quizes from "./Quizes";
+import MyResults from "./MyResults";
+// import { PostList, PostShow, PostCreate, PostEdit } from "./Posts";
+import { UserList, UserShow, UserCreate, UserEdit } from "./Users";
 
 const Dashboard = () => {
   return (
@@ -28,8 +31,17 @@ const Dashboard = () => {
         loginPage={LoginWithTheme}
       >
         <Resource name="overview" list={Overview} icon={DashboardIcon} />
-        <Resource name="tests" list={Tests} icon={AssignmentIcon} />
+        <Resource name="quizes" list={Quizes} icon={AssignmentIcon} />
         <Resource name="my results" list={MyResults} icon={AssessmentIcon} />
+
+        <Resource
+          name="users"
+          icon={UserIcon}
+          list={UserList}
+          show={UserShow}
+          create={UserCreate}
+          edit={UserEdit}
+        />
       </Admin>
     </div>
   );

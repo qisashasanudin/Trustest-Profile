@@ -41,7 +41,7 @@ const Preparation = ({ quiz }) => {
     {
       icon: PeopleIcon,
       primary: "Students",
-      secondary: quiz.students + " enrolled",
+      secondary: quiz.numOfStudents + " enrolled",
     },
   ];
 
