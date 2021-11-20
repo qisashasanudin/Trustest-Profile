@@ -3,7 +3,7 @@ import { Admin, Resource } from "react-admin";
 
 import Layout from "../../components/atoms/DashboardLayout";
 import DashboardCustomRoutes from "../../components/atoms/DashboardCustomRoutes";
-import LoginWithTheme from "../login";
+import LoginAndRegister from "../loginAndRegister";
 
 import { dataProvider, authProvider } from "../../providers-react-admin";
 
@@ -28,7 +28,7 @@ const Dashboard = () => {
         customRoutes={DashboardCustomRoutes}
         authProvider={authProvider}
         dataProvider={dataProvider}
-        loginPage={LoginWithTheme}
+        loginPage={LoginAndRegister}
       >
         <Resource name="overview" list={Overview} icon={DashboardIcon} />
         <Resource name="quizes" list={Quizes} icon={AssignmentIcon} />

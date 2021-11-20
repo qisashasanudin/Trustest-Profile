@@ -26,10 +26,11 @@ const UserFilter = (props) => (
 export const UserList = (props) => (
   <List {...props} filters={<UserFilter />}>
     <Datagrid>
-      <TextField source="name" />
-      <TextField source="age" />
-      <TextField source="createdate" />
-      <TextField source="lastupdate" />
+      <TextField source="displayName" />
+      <TextField source="email" />
+      <TextField source="npm" />
+      <TextField source="userType" />
+      <TextField source="dateCreated" />
       <ShowButton label="" />
       <EditButton label="" />
       <DeleteButton label="" redirect={false} />
@@ -40,9 +41,10 @@ export const UserList = (props) => (
 export const UserShow = (props) => (
   <Show {...props}>
     <SimpleShowLayout>
-      <TextField source="id" />
-      <TextField source="name" />
-      <TextField source="age" />
+      <TextField source="displayName" />
+      <TextField source="userType" />
+      <TextField source="email" />
+      <TextField source="npm" />
     </SimpleShowLayout>
   </Show>
 );
@@ -50,9 +52,10 @@ export const UserShow = (props) => (
 export const UserCreate = (props) => (
   <Create {...props}>
     <SimpleForm>
-      <TextInput source="id" />
-      <TextInput source="name" />
-      <TextInput source="age" />
+      <TextField source="displayName" />
+      <TextField source="userType" />
+      <TextField source="email" />
+      <TextField source="npm" />
     </SimpleForm>
   </Create>
 );
@@ -60,11 +63,11 @@ export const UserCreate = (props) => (
 export const UserEdit = (props) => (
   <Edit {...props}>
     <SimpleForm>
-      <TextInput disabled source="id" />
       <TextInput disabled source="createdate" />
-      <TextInput disabled source="lastupdate" />
-      <TextInput source="name" />
-      <TextInput source="age" />
+      <TextField source="displayName" />
+      <TextField source="userType" />
+      <TextField source="email" />
+      <TextField source="npm" />
     </SimpleForm>
   </Edit>
 );

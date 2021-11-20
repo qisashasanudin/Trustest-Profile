@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { db } from "../../../providers-firebase";
-import { collection, onSnapshot } from "firebase/firestore";
+import { db, auth } from "../../../providers-firebase";
+import { collection, onSnapshot, doc } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
 
 import {
   Dialog,
+  Modal,
   DialogContent,
   Box,
   Grid,
   Card,
   CardActionArea,
+  Typography,
 } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
@@ -18,9 +21,11 @@ import "./Quizes.scss";
 
 const Quizes = () => {
   const [quizes, setQuizes] = useState([]);
+  const [userData, setUserData] = useState();
   const [selectedQuiz, setSelectedQuiz] = useState(null);
 
-  const [openDialog, setOpenDialog] = useState(false);
+  const [openPrepDialog, setOpenPrepDialog] = useState(false);
+  const [openNoAccessModal, setOpenNoAccessModal] = useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -33,12 +38,25 @@ const Quizes = () => {
     []
   );
 
-  const handleClickOpen = () => {
-    setOpenDialog(true);
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        onSnapshot(doc(db, "users", user.uid), (doc) => {
+          setUserData(doc.data());
+        });
+      }
+    });
+  }, []);
+
+  const handleClickOpen = (quiz) => {
+    quiz.students && quiz.students.includes(userData.npm)
+      ? setOpenPrepDialog(true)
+      : setOpenNoAccessModal(true);
   };
 
   const handleClose = () => {
-    setOpenDialog(false);
+    setOpenPrepDialog(false);
+    setOpenNoAccessModal(false);
   };
 
   return (
@@ -51,7 +69,7 @@ const Quizes = () => {
                 <CardActionArea
                   onClick={() => {
                     setSelectedQuiz(quiz);
-                    handleClickOpen();
+                    handleClickOpen(quiz);
                   }}
                 >
                   <Summary quiz={quiz} />
@@ -62,12 +80,39 @@ const Quizes = () => {
         </Grid>
       </Box>
 
+      <Modal
+        open={openNoAccessModal}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: 300,
+            bgcolor: "#fff",
+            boxShadow: 24,
+            p: 4,
+          }}
+        >
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Access Unavailable
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Your student ID (NPM) is not registered in this quiz.
+          </Typography>
+        </Box>
+      </Modal>
+
       <Dialog
         scroll={"body"}
         maxWidth={"lg"}
         fullWidth={true}
         fullScreen={fullScreen}
-        open={openDialog}
+        open={openPrepDialog}
         onClose={handleClose}
       >
         <DialogContent sx={{ textAlign: "center", overflow: "hidden" }}>
