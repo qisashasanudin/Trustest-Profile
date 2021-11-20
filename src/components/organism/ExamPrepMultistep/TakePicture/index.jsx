@@ -32,6 +32,7 @@ const TakePicture = ({ image, setImage }) => {
             screenshotFormat="image/jpeg"
             videoConstraints={videoConstraints}
           />
+
           {image == null ? (
             <img src={WebcamPlaceholder} alt="camera-icon" />
           ) : (

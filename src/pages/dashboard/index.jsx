@@ -5,7 +5,7 @@ import Layout from "../../components/atoms/DashboardLayout";
 import DashboardCustomRoutes from "../../components/atoms/DashboardCustomRoutes";
 import LoginWithTheme from "../login";
 
-import { dataProvider, authProvider } from "../../providers";
+import { dataProvider, authProvider } from "../../providers-react-admin";
 
 import {
   People as UserIcon,

@@ -48,6 +48,14 @@ const CustomAppBar = (props) => {
 
   const routeToRoot = () => {
     history.push("/");
+    history.goBack();
+    history.goBack();
+    history.push("/");
+    history.goBack();
+    history.goBack();
+    history.push("/");
+    history.goBack();
+    history.goBack();
   };
 
   return (

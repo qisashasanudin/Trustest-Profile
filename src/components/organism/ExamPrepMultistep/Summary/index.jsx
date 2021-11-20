@@ -21,12 +21,12 @@ const Preparation = ({ quiz }) => {
     {
       icon: DateRangeIcon,
       primary: "Start Date",
-      secondary: quiz.startDate.toString(),
+      secondary: new Date(quiz.startDate.seconds * 1000).toString(),
     },
     {
       icon: DateRangeIcon,
       primary: "End date",
-      secondary: quiz.endDate.toString(),
+      secondary: new Date(quiz.endDate.seconds * 1000).toString(),
     },
     {
       icon: TimerIcon,

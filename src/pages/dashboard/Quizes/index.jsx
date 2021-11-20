@@ -1,5 +1,6 @@
-import React from "react";
-import { useGetList, Loading, Error } from "react-admin";
+import React, { useState, useEffect } from "react";
+import { db } from "../../../providers-firebase";
+import { collection, onSnapshot } from "firebase/firestore";
 
 import {
   Dialog,
@@ -16,11 +17,21 @@ import Summary from "../../../components/organism/ExamPrepMultistep/Summary";
 import "./Quizes.scss";
 
 const Quizes = () => {
-  const [openDialog, setOpenDialog] = React.useState(false);
-  const [selectedQuiz, setSelectedQuiz] = React.useState(null);
+  const [quizes, setQuizes] = useState([]);
+  const [selectedQuiz, setSelectedQuiz] = useState(null);
 
+  const [openDialog, setOpenDialog] = useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
+
+  useEffect(
+    () =>
+      onSnapshot(collection(db, "quizes"), (snapshot) => {
+        setQuizes(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      }),
+
+    []
+  );
 
   const handleClickOpen = () => {
     setOpenDialog(true);
@@ -30,31 +41,20 @@ const Quizes = () => {
     setOpenDialog(false);
   };
 
-  const { data, ids, loading, error } = useGetList(
-    "quizes",
-    { page: 1, perPage: 1000 },
-    { field: "subjectName", order: "DESC" }
-    // { numOfQuestions: 25 } //filter
-  );
-  if (loading) return <Loading />;
-  if (error) return <Error />;
-  const quizList = data;
-  const quizIds = ids;
-
   return (
     <div className="quiz-container">
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={4}>
-          {quizIds.map((quizId) => (
-            <Grid item xs={12} md={6} lg={4} key={quizId}>
+          {quizes.map((quiz) => (
+            <Grid item xs={12} md={6} lg={4} key={quiz.id}>
               <Card sx={{ maxWidth: 600, borderRadius: 5, boxShadow: 5 }}>
                 <CardActionArea
                   onClick={() => {
-                    setSelectedQuiz(quizList[quizId]);
+                    setSelectedQuiz(quiz);
                     handleClickOpen();
                   }}
                 >
-                  <Summary quiz={quizList[quizId]} />
+                  <Summary quiz={quiz} />
                 </CardActionArea>
               </Card>
             </Grid>
