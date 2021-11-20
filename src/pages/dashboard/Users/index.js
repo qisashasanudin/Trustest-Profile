@@ -19,7 +19,7 @@ import {
 
 const UserFilter = (props) => (
   <Filter {...props}>
-    <TextInput label="Search" source="title" alwaysOn />
+    <TextInput label="Search" source="displayName" alwaysOn />
   </Filter>
 );
 
@@ -64,10 +64,10 @@ export const UserEdit = (props) => (
   <Edit {...props}>
     <SimpleForm>
       <TextInput disabled source="createdate" />
-      <TextField source="displayName" />
-      <TextField source="userType" />
-      <TextField source="email" />
-      <TextField source="npm" />
+      <TextInput source="displayName" />
+      <TextInput source="userType" />
+      <TextInput source="email" />
+      <TextInput source="npm" />
     </SimpleForm>
   </Edit>
 );
