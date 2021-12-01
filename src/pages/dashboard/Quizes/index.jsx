@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { db, auth } from "../../../providers-firebase";
 import { collection, onSnapshot, doc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
-
+import firebase from "@firebase/app-compat";
 import {
   Dialog,
   Modal,
@@ -23,7 +23,7 @@ const Quizes = () => {
   const [quizes, setQuizes] = useState([]);
   const [userData, setUserData] = useState();
   const [selectedQuiz, setSelectedQuiz] = useState(null);
-
+  const [sessionId, setSessionId] = useState(null);
   const [openPrepDialog, setOpenPrepDialog] = useState(false);
   const [openNoAccessModal, setOpenNoAccessModal] = useState(false);
   const theme = useTheme();
@@ -37,16 +37,26 @@ const Quizes = () => {
 
     []
   );
-
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         onSnapshot(doc(db, "users", user.uid), (doc) => {
-          setUserData(doc.data());
+          setUserData({ ...doc.data(), id: user.uid });
         });
       }
     });
   }, []);
+
+  const handleCreateSession = async (quizId) => {
+    let sessionRef = firebase.firestore().collection("/sessions");
+    const newSession = await sessionRef.add({
+      logs: [],
+      quiz: doc(db, "quizes/" + quizId),
+      user: doc(db, "users/" + userData.id),
+      user_pic: "",
+    });
+    setSessionId(newSession.id);
+  };
 
   const handleClickOpen = (quiz) => {
     quiz.students && quiz.students.includes(userData.npm)
@@ -70,6 +80,7 @@ const Quizes = () => {
                   onClick={() => {
                     setSelectedQuiz(quiz);
                     handleClickOpen(quiz);
+                    handleCreateSession(quiz.id);
                   }}
                 >
                   <Summary quiz={quiz} />
@@ -83,6 +94,7 @@ const Quizes = () => {
       <Modal
         open={openNoAccessModal}
         onClose={handleClose}
+        onBackdropClick={() => setOpenNoAccessModal(true)}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -113,10 +125,14 @@ const Quizes = () => {
         fullWidth={true}
         fullScreen={fullScreen}
         open={openPrepDialog}
-        onClose={handleClose}
+        onClose={(handleClose, "backdropClick")}
       >
         <DialogContent sx={{ textAlign: "center", overflow: "hidden" }}>
-          <ExamPreparation quiz={selectedQuiz} onClose={handleClose} />
+          <ExamPreparation
+            quiz={selectedQuiz}
+            onClose={handleClose}
+            sessionId={sessionId}
+          />
         </DialogContent>
       </Dialog>
     </div>

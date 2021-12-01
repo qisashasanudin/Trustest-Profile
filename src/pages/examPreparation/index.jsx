@@ -22,7 +22,7 @@ import Rules from "../../components/organism/ExamPrepMultistep/Rules";
 
 // =======================================================================================
 
-const ExamPreparation = ({ quiz, onClose }) => {
+const ExamPreparation = ({ quiz, onClose, sessionId }) => {
   const [activeStep, setActiveStep] = React.useState(0);
   const [slideDir, setSlideDir] = React.useState("slideleft");
   const [agree, setAgree] = React.useState(false);
@@ -78,7 +78,9 @@ const ExamPreparation = ({ quiz, onClose }) => {
     },
     {
       title: "Take Your Photo",
-      content: <TakePicture image={image} setImage={setImage} />,
+      content: (
+        <TakePicture image={image} setImage={setImage} sessionId={sessionId} />
+      ),
     },
     {
       title: "Exam Rules",
