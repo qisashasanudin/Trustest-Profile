@@ -3,8 +3,8 @@ import Webcam from "react-webcam";
 import { WebcamPlaceholder } from "../../../../assets";
 import "./TakePicture.scss";
 import { Button, Divider } from "@mui/material";
-import firebase from "@firebase/app-compat";
-import { storage } from "../../../../providers-firebase";
+import { storage, db } from "../../../../providers-firebase";
+import { updateDoc, doc } from "@firebase/firestore";
 import { ref, uploadString, getDownloadURL } from "@firebase/storage";
 
 const TakePicture = ({ image, setImage, sessionId }) => {
@@ -19,20 +19,17 @@ const TakePicture = ({ image, setImage, sessionId }) => {
     setImage(imageSrc);
   }, [webcamRef, setImage]);
 
-  console.log(image);
-
-  const updateSessionPicture = () => {
+  const updateSessionPicture = async () => {
     const timestamp = new Date().getTime();
-    let sessionRef = firebase.firestore().collection("/sessions");
+    let sessionRef = doc(db, "sessions", sessionId);
     if (image == null) return;
     const storageRef = ref(storage, `images/image-${timestamp}`);
-    uploadString(storageRef, image, "data_url").then((snapshot) => {
-      getDownloadURL(snapshot.ref).then((url) => {
-        sessionRef.doc(sessionId).update({
-          user_pic: url,
-        });
-      });
+    const snapshot = await uploadString(storageRef, image, "data_url");
+    const url = await getDownloadURL(snapshot.ref);
+    const response = await updateDoc(sessionRef, {
+      user_pic: url,
     });
+    return response;
   };
 
   return (
