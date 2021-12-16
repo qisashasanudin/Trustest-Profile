@@ -1,5 +1,42 @@
 @import "../../sass/main.scss";
 
 .progressExam {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  &__countdown {
+    display: flex;
+    flex-direction: row;
+    column-gap: 15px;
+    &__clock {
+      display: flex;
+      flex-direction: column;
+      row-gap: 5px;
+      align-items: center;
+      align-self: center;
+    }
+  }
+  &__buttons {
+    display: flex;
+    gap: 5em;
+    button {
+      border: 1px transparent;
+      border-radius: 8px;
+      padding: 1em;
+      transition: all ease 1s;
+    }
+    button:hover {
+      background-color: $color-primary;
+      color: $color-white;
+    }
+  }
+}
+
+#webgazerVideoContainer {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
   z-index: 999;
 }

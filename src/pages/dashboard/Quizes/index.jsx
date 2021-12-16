@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { db, auth } from "../../../providers-firebase";
 import { collection, onSnapshot, doc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
@@ -18,6 +18,7 @@ import { useTheme } from "@mui/material/styles";
 import ExamPreparation from "../../examPreparation";
 import Summary from "../../../components/organism/ExamPrepMultistep/Summary";
 import "./Quizes.scss";
+import { sessionContext } from "../../../context";
 
 const Quizes = () => {
   const [quizes, setQuizes] = useState([]);
@@ -28,6 +29,7 @@ const Quizes = () => {
   const [openNoAccessModal, setOpenNoAccessModal] = useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
+  const { setSession } = useContext(sessionContext);
 
   useEffect(
     () =>
@@ -56,6 +58,7 @@ const Quizes = () => {
       user_pic: "",
     });
     setSessionId(newSession.id);
+    setSession(newSession.id);
   };
 
   const handleClickOpen = (quiz) => {

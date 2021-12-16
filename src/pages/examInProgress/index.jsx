@@ -1,61 +1,18 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
+import { sessionContext } from "../../context";
 import "./examInProgress.scss";
+import { db } from "../../providers-firebase";
+import { updateDoc, doc, getDoc } from "@firebase/firestore";
 
-// var elem = document.documentElement;
 export default function ExamInProgress() {
   const [log, setLog] = useState([]);
   const [status, setStatus] = useState(true);
-  // const videoRef = useRef();
-  // const buttonRef = useRef();
-  // const goFullScreen = () => {
-  //   if (elem.requestFullscreen) {
-  //     elem.requestFullscreen();
-  //   } else if (elem.webkitRequestFullscreen) {
-  //     /* Safari */
-  //     elem.webkitRequestFullscreen();
-  //   } else if (elem.msRequestFullscreen) {
-  //     /* IE11 */
-  //     elem.msRequestFullscreen();
-  //   }
-  // };
-  // const closeScreen = async () => {
-  //   if (!document.exitFullscreen) {
-  //     document.exitFullscreen();
-  //   } else if (document.webkitExitFullscreen) {
-  //     /* Safari */
-  //     document.webkitExitFullscreen();
-  //   } else if (document.msExitFullscreen) {
-  //     /* IE11 */
-  //     document.msExitFullscreen();
-  //   }
-  // };
-
-  // //share content
-  // const shareScreenMedia = async () => {
-  //   try {
-  //     await navigator.share({ title: "Example Page", url: "" });
-  //   } catch (e) {
-  //     console.log(e.message);
-  //   }
-  // };
-
-  // const pipMode = () => {
-  //   const pipButton = buttonRef.current;
-  //   const video = videoRef.current;
-  //   // Hide button if Picture-in-Picture is not supported.
-  //   pipButton.hidden = !document.pictureInPictureEnabled;
-  //   if (!document.pictureInPictureElement) {
-  //     video.requestPictureInPicture().catch((error) => {
-  //       // Video failed to enter Picture-in-Picture mode.
-  //       console.log(error.message);
-  //     });
-  //   } else {
-  //     document.exitPictureInPicture().catch((error) => {
-  //       // Video failed to leave Picture-in-Picture mode.
-  //       console.log(error.message);
-  //     });
-  //   }
-  // };
+  const [quizData, setQuizData] = useState({});
+  const { session } = useContext(sessionContext);
+  const [seconds, setSeconds] = useState(99);
+  const [minutes, setMinutes] = useState(99);
+  const [hours, setHours] = useState(99);
+  const [days, setDays] = useState(99);
 
   const webgazer = window.webgazer;
   const beginExam = () => {
@@ -77,12 +34,9 @@ export default function ExamInProgress() {
     });
     return ref.current;
   }
-
   const prevStatus = usePrevious(status);
 
   useEffect(() => {
-    console.log("STATUSS ==>", status);
-    console.log("prev status ==>", prevStatus);
     if (status !== prevStatus) {
       setLog((prevLog) => [
         ...prevLog,
@@ -91,40 +45,91 @@ export default function ExamInProgress() {
     }
   }, [status, prevStatus]);
 
-  const endExam = () => {
+  useEffect(() => {
+    let sessionRef = doc(db, "sessions", session);
+    const fetchSession = async () => {
+      const sessionRes = await getDoc(sessionRef);
+      const sessionData = sessionRes.data();
+      const quizRes = await getDoc(sessionData.quiz);
+      const quiz = quizRes.data();
+      setQuizData({
+        quizTime: quiz.endDate.seconds * 1000,
+      });
+    };
+    fetchSession();
+  }, [session]);
+
+  var countDownDate = quizData.quizTime;
+  useEffect(() => {
+    const interval = setInterval(() => {
+      var now = new Date().getTime();
+      var distance = countDownDate - now;
+      if (distance >= 0) {
+        setDays(Math.floor(distance / (1000 * 60 * 60 * 24)));
+        setHours(
+          Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+        );
+        setMinutes(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
+        setSeconds(Math.floor((distance % (1000 * 60)) / 1000));
+      } else {
+        setDays(0);
+        setHours(0);
+        setMinutes(0);
+        setSeconds(0);
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [countDownDate, quizData]);
+
+  const endExam = async () => {
     webgazer.pause();
-    console.log(log);
+    let sessionRef = doc(db, "sessions", session);
+    const response = await updateDoc(sessionRef, {
+      logs: log,
+    });
+
+    return response;
   };
   return (
     <>
       <div className="progressExam">
-        <h1>Hello World</h1>
-        {/* <video className="app__video" ref={videoRef} controls>
-          <source
-            src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-            type="video/mp4"
-          />
-        </video>
-        <button onClick={goFullScreen}>FullScreen</button>
-        <button onClick={closeScreen}>CloseScreen</button>
-        <button onClick={shareScreenMedia}>ShareContent</button>
-        <button ref={buttonRef} onClick={pipMode}>
-          PictureInPictureMode
-        </button> */}
-        <button
-          onClick={() => {
-            beginExam();
-          }}
-        >
-          Begin
-        </button>
-        <button
-          onClick={() => {
-            endExam();
-          }}
-        >
-          Finish Attempt
-        </button>
+        <div className="progressExam__countdown">
+          <div className="progressExam__countdown__clock">
+            <h1>{days <= 9 ? `0${days}` : days}</h1>
+            <h6 className="nopad">Hari</h6>
+          </div>
+          <h1>:</h1>
+          <div className="progressExam__countdown__clock">
+            <h1>{hours <= 9 ? `0${hours}` : hours}</h1>
+            <h6 className="nopad">Jam</h6>
+          </div>
+          <h1>:</h1>
+          <div className="progressExam__countdown__clock">
+            <h1>{minutes <= 9 ? `0${minutes}` : minutes}</h1>
+            <h6 className="nopad">Menit</h6>
+          </div>
+          <h1>:</h1>
+          <div className="progressExam__countdown__clock">
+            <h1>{seconds <= 9 ? `0${seconds}` : seconds}</h1>
+            <h6 className="nopad">Detik</h6>
+          </div>
+        </div>
+        <div className="progressExam__buttons">
+          <button
+            onClick={() => {
+              beginExam();
+            }}
+          >
+            Begin
+          </button>
+          <button
+            onClick={() => {
+              endExam();
+            }}
+          >
+            Finish Attempt
+          </button>
+        </div>
       </div>
     </>
   );

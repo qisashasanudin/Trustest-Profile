@@ -29,6 +29,7 @@ const TakePicture = ({ image, setImage, sessionId }) => {
     const response = await updateDoc(sessionRef, {
       user_pic: url,
     });
+    console.log(response);
     return response;
   };
 
