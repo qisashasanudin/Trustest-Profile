@@ -3,6 +3,7 @@ import { sessionContext } from "../../context";
 import "./examInProgress.scss";
 import { db } from "../../providers-firebase";
 import { updateDoc, doc, getDoc } from "@firebase/firestore";
+import { useHistory } from "react-router-dom";
 
 export default function ExamInProgress() {
   const [log, setLog] = useState([]);
@@ -13,7 +14,7 @@ export default function ExamInProgress() {
   const [minutes, setMinutes] = useState(99);
   const [hours, setHours] = useState(99);
   const [days, setDays] = useState(99);
-
+  const history = useHistory();
   const webgazer = window.webgazer;
   const beginExam = () => {
     webgazer
@@ -38,9 +39,10 @@ export default function ExamInProgress() {
 
   useEffect(() => {
     if (status !== prevStatus) {
+      const timestamp = new Date().getTime();
       setLog((prevLog) => [
         ...prevLog,
-        { activity: "Student goes out of frame" },
+        { activity: "Student goes out of frame", timestamp: timestamp },
       ]);
     }
   }, [status, prevStatus]);
@@ -125,6 +127,7 @@ export default function ExamInProgress() {
           <button
             onClick={() => {
               endExam();
+              history.push("/");
             }}
           >
             Finish Attempt
