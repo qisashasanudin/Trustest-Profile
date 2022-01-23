@@ -10,7 +10,7 @@ A React.js project made by:
 ## Live Demo:
 https://trustest-profile.vercel.app/
 
-## Screenshots
+## Screenshots:
 ![landing](ss/landing.png)
 ![menu](ss/menu.png)
 ![step1](ss/step1.png)
