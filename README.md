@@ -1,4 +1,21 @@
-# Getting Started with Create React App
+# Student Dashboard for TRUSTest
+
+A React.js project made by:
+- Ferdian Julianto
+- Jonathan
+- Nathaniel Faustine
+- Qisas Tazkia Hasanudin
+- Vincentius Indra Lithgow
+
+## Screenshots
+![landing](ss/landing.png)
+![menu](ss/menu.png)
+![step1](ss/step1.png)
+![step2](ss/step2.png)
+![step3](ss/step3.png)
+![step4](ss/step4.png)
+![step5](ss/step5.png)
+![step6](ss/step6.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
