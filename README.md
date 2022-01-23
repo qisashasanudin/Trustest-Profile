@@ -7,6 +7,9 @@ A React.js project made by:
 - Qisas Tazkia Hasanudin
 - Vincentius Indra Lithgow
 
+## Live Demo:
+https://trustest-profile.vercel.app/
+
 ## Screenshots
 ![landing](ss/landing.png)
 ![menu](ss/menu.png)
